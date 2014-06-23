@@ -1,0 +1,28 @@
+{
+  "name": "jsrobot",
+  "version": "0.0.1",
+  "description": "JavaScript challenge web application",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "mocha": "~1.20.1",
+      "chai": "~1.9.1",
+      "mocha-phantomjs": "~3.4.1",
+      "phantomjs": "~1.9.7-9"
+  },
+  "scripts": {
+    "test": "mocha-phantomjs test/test.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ahineya/jsrobot.git"
+  },
+  "author": "Pavel Evsegneev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahineya/jsrobot/issues"
+  },
+  "homepage": "https://github.com/Ahineya/jsrobot"
+}

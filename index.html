@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS Robot</title>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+    <script src="lib/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/highlight.css">
+    <script src="lib/highlight.js"></script>
+    <script>hljs.configure({tabReplace: '<span class="indent">\t</span>'});</script>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+    <div class="buttons">
+        <button class="run nephritis-flat-button">Run</button>
+        <button class="reload alizarin-flat-button">Reload</button>
+    </div>
+
+    <div class="description"></div>
+    <div class="error"></div>
+
+    <div class="before"><pre><code>for (var i = 0; i<=20 ; i++) {</code></pre></div>
+    <div class="code"><pre><code contenteditable="true">
+        /*write your code here*/
+    </code></pre></div>
+    <div class="after"><pre><code>
+    if (R.finished()) {
+        break;
+    };
+}
+
+    </code></pre></div>
+    <script src="js/map.js"></script>
+    <script src="js/robot.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/runner.js"></script>
+
+    <script>//$('pre code').each(function(i, e) {hljs.highlightBlock(e)});</script>
+
+</body>
+</html>
