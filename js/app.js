@@ -4,7 +4,11 @@
     var m;
 
     var levels = {};
-    var currentLevel = 0;
+    var nextLevel = 0;
+
+    if (window.location.hash !== '') {
+        nextLevel = +window.location.hash.substring(1);
+    }
 
     $.get('/levels/levels.json')
         .success(function(data) {
@@ -18,10 +22,11 @@
                 for (var level in levels) {
                     if (levels.hasOwnProperty(level)) {
                         for (var i = 0; i<level.length; i++) {
-                            if (c === currentLevel) {
+                            if (c === nextLevel) {
                                 if (typeof(levels[level][c])!=='undefined') {
                                     loadLevel(levels[level][c]);
-                                    currentLevel = c+1;
+                                    nextLevel = c+1;
+                                    window.location.hash = c;
                                 }
                                 break;
                             }
