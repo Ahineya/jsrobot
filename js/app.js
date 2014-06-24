@@ -75,7 +75,7 @@
         }
     }
 
-    $.get('/levels/levels.json')
+    $.get('levels/levels.json')
         .success(function(data) {
 
             var levels = data;
@@ -181,6 +181,19 @@
                     clearInterval(intervals[intr]);
                 }
                 clearInterval(tmr);
+
+                var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
+                if (wonLevels.indexOf(+window.location.hash.substring(1)) === -1) {
+                    wonLevels.push(+window.location.hash.substring(1));
+                    localStorage.setItem("wonLevels", JSON.stringify(wonLevels));
+                    $('.level').each(function() {
+                        if ($(this).data('levelId') == window.location.hash.substring(1)) {
+                            $(this).addClass('passed');
+                        }
+                    });
+                }
+
+
             }
         }, 200);
 
@@ -215,14 +228,19 @@
                 .text(grp)
                 .appendTo(lgroup);
 
+            var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
+
             if (levels.hasOwnProperty(grp)) {
                 for (var i = 0; i<levels[grp].length; i++) {
-                    $('<div></div>')
+                    var lvl = $('<div></div>')
                         .addClass('level')
                         .data('level-id', i)
                         .text(i + ". " + levels[grp][i].name)
                         .on('click', bindClick)
                         .appendTo(lgroup);
+                    if (wonLevels.indexOf(i) !== -1) {
+                        lvl.addClass('passed');
+                    }
                 }
             }
         }

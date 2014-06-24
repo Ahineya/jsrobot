@@ -79,7 +79,7 @@
                 "height": 5,
                 "file": "levels/maps/basics-first-death.map"
             },
-            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are still disobeying instructions. Prepare to be desintegrated.</span></p><p><br></p><p>Robots have <span class='code'>R.standindOn(char)</span> instruction. It returns true, if robot standing on char symbol.</p>",
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are still disobeying instructions. Prepare to be desintegrated.</span></p><p><br></p><p>Robots have <span class='code'>R.standingOn(char)</span> instruction. It returns true, if robot standing on char symbol.</p>",
             "before": "\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
             "code": "",
             "after": "\n\t\t\tR.right();\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
@@ -91,7 +91,7 @@
                 "height": 15,
                 "file": "levels/maps/basics-second-labyrinth.map"
             },
-            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Try to escape from labyrinth of doom! Bzzz-zzz.</span></p><p><br></p><p>If <span class='code'>R.standindOn(char)</span> called without params, it returns symbol robot stands. And remember, that start marked with \"_\" symbol.</p>",
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Try to escape from labyrinth of doom! Bzzz-zzz.</span></p><p><br></p><p>If <span class='code'>R.standingOn(char)</span> called without params, it returns symbol robot stands. And remember, that start marked with \"_\" symbol.</p>",
             "before": "var temp = 0;\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
             "code": "",
             "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"

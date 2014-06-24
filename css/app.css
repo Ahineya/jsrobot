@@ -95,6 +95,9 @@ body {
 .levels .greeting .words p {
     padding-bottom: 12px;
 }
+.levels .greeting .words p a, .levels .greeting .words p a:visited {
+    color: black;
+}
 .levels .greeting .words .code {
     background-color: #f0f0f0;
     margin: 2px;
@@ -133,6 +136,10 @@ body {
     cursor: pointer;
     background-color: gray;
     color: #f0f0f0;
+}
+
+.levels .level.passed {
+    background-color: rgba(39, 174, 96, 1);
 }
 
 .levels .level:hover {
