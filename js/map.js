@@ -21,13 +21,21 @@ function Map(options) {
     };
 
     this.cells = [];
+    this.base = [];
 
     for (var y = 0; y < this.options.height; y++) {
         for(var x = 0; x < this.options.width; x++) {
             if (typeof(this.cells[x]) === 'undefined') {
                 this.cells[x] = [];
+                this.base[x] = [];
             }
             this.cells[x][y] = {
+                symbol: " ",
+                type: "space",
+                color: "black",
+                backgroundColor: "white"
+            };
+            this.base[x][y] = {
                 symbol: " ",
                 type: "space",
                 color: "black",
@@ -45,8 +53,15 @@ function Map(options) {
             for(var x = 0; x < this.options.width; x++) {
                 if (typeof(this.cells[x]) === 'undefined') {
                     this.cells[x] = [];
+                    this.base[x] = [];
                 }
                 this.cells[x][y] = {
+                    symbol: mapStr[current],
+                    type: mapStr[current] !== ' ' ? SYMBOL_TYPES[mapStr[current]] : SYMBOL_TYPES.space,
+                    color: color,
+                    backgroundColor: backColor
+                };
+                this.base[x][y] = {
                     symbol: mapStr[current],
                     type: mapStr[current] !== ' ' ? SYMBOL_TYPES[mapStr[current]] : SYMBOL_TYPES.space,
                     color: color,
@@ -116,7 +131,9 @@ function Map(options) {
         for (var y = 0; y < this.options.height; y++) {
             for(var x = 0; x < this.options.width; x++) {
 
-                self.cells[x][y].view.text(self.cells[x][y].symbol);
+                self.cells[x][y].view.text(self.base[x][y].symbol);
+                self.cells[x][y].symbol = self.base[x][y].symbol;
+                self.cells[x][y].type = self.base[x][y].type;
 
             }
         }

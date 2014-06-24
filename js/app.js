@@ -33,24 +33,38 @@
     });
 
     function loadNextLevel(levels) {
+//console.log('here');
+        $('.container').empty();
+
+        //console.log($('.container').html());
 
         if (!this.levels) {
             this.levels = levels;
         }
 
+        //if ()
+
         levels = this.levels;
+
+        console.log('l:', levels);
 
         var c = 0;
 
         $('.overlay').hide();
         for (var level in levels) {
+
             if (levels.hasOwnProperty(level)) {
-                for (var i = 0; i<level.length; i++) {
+                for (var i = 0; i<=levels[level].length; i++) {
+                    console.log(c);
+
                     if (c === nextLevel) {
                         if (typeof(levels[level][c])!=='undefined') {
                             loadLevel(levels[level][c]);
                             nextLevel = c+1;
                             window.location.hash = c;
+                        } else {
+                            $('.greeting').hide();
+                            $('.levels').show();
                         }
                         break;
                     }
@@ -65,6 +79,8 @@
         .success(function(data) {
 
             var levels = data;
+
+            console.log(levels);
 
             fillLevelsDiv(levels);
 
@@ -88,6 +104,8 @@
 
     function loadLevel(level) {
 
+        $('.container').empty();
+
         if (m instanceof Map) {
             m.reload({
                 width: level.map.width,
@@ -100,8 +118,6 @@
             });
         } else {
 
-            $('.container').empty();
-
             m = new Map({
                 width: level.map.width,
                 height: level.map.height,
@@ -110,7 +126,9 @@
             });
         }
 
+
         m.fillFromFile(level.map.file, function(data) {
+            $('.container').empty();
             m.display();
             R = new Robot();
             R.assignMap(m);
@@ -126,6 +144,9 @@
 
         $('pre code').each(function(i, e) {hljs.highlightBlock(e);});
 
+        $('.run').attr('disabled', false);
+        $('.reload').attr('disabled', false);
+
         $('.run').off('click').on('click', function() {
 
             for (var intr in intervals) {
@@ -133,6 +154,8 @@
             }
 
             $('.error').hide();
+            R.map.redraw();
+            R.place();
 
             var r = new Runner({
                 robot: R,
@@ -150,6 +173,8 @@
 
         var tmr = setInterval(function() {
             if (R.finished()) {
+                $('.run').attr('disabled', true);
+                $('.reload').attr('disabled', true);
                 $('.overlay').show();
                 $('.success-wrapper').css('marginTop', $('.overlay').height() / 2 - $('.success-wrapper').height() / 2);
                 for (var intr in intervals) {
@@ -204,3 +229,14 @@
     }
 
 })();
+
+function error(e, intervals, R) {
+    for (var intr in intervals) {
+        clearInterval(intervals[intr]);
+    }
+
+    R.map.redraw();
+    R.place();
+
+    $('.error').text(e.toString()).show();
+}

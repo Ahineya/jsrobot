@@ -290,7 +290,7 @@ describe('2 Robot', function() {
 
     });
 
-    describe('2.2 Robot movement', function() {
+    describe('2.2 Robot actions', function() {
         var R = new Robot();
         R.assignMap(rmap);
         R.place();
@@ -380,19 +380,20 @@ describe('2 Robot', function() {
                 var tempX = R.x;
                 var tempY = R.y;
 
-                chai.assert(!R.walk('right'), "Robot walked into wall");
-                chai.assert( (tempX === R.x) && (tempY === R.y), "Robot coordinates changed" );
-                chai.assert(
-                        $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (tempX+1))
-                            .eq(R.y).text() === R.map.cells[tempX+1][R.y].symbol,
-                    "Map wall isn't in it's place"
-                );
+                    chai.assert(!R.right(), "Robot: can't go into the wall");
 
-                chai.assert(
-                        $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (tempX+1))
-                            .eq(tempY).text() === R.map.cells[R.x+1][R.y].symbol,
-                    "Robot changed view"
-                );
+                    chai.assert((tempX === R.x) && (tempY === R.y), "Robot coordinates changed");
+                    chai.assert(
+                            $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (tempX + 1))
+                                .eq(R.y).text() === R.map.cells[tempX + 1][R.y].symbol,
+                        "Map wall isn't in it's place"
+                    );
+
+                    chai.assert(
+                            $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (tempX + 1))
+                                .eq(tempY).text() === R.map.cells[R.x + 1][R.y].symbol,
+                        "Robot changed view"
+                    );
 
             });
 
@@ -402,6 +403,30 @@ describe('2 Robot', function() {
                 chai.assert(R.finished(), "Robot think's he didn't finished on finish cell");
             });
 
+        });
+
+        describe("2.2.4 Map manipulating", function() {
+            it("2.2.4.1 should destroy the wall", function() {
+                R.destroy('right');
+                chai.assert(
+                    $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (R.x + 1))
+                         .eq(R.y).text() === " ",
+                    "Robot didin't destroyed a wall"
+                );
+
+            });
+            it("2.2.4.2 should recognize floor symbol", function() {
+                chai.assert(R.standingOn('f'), "Robot didn't recognize floor");
+            });
+            it("2.2.4.2 should recognize floor symbol", function() {
+                chai.assert(R.standingOn() === 'f', "Robot didn't recognize floor");
+            });
+        });
+
+        describe("2.2.5 Other actions", function() {
+            it("2.2.4.3 should die", function() {
+                chai.assert.throws(R.die, Error, "Robot has died.");
+            });
         });
 
 

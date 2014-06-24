@@ -64,7 +64,11 @@ function Robot() {
                 newX--;
                 break;
             default:
-                return false;
+                self
+                    .map
+                    .cells[self.x][self.y]
+                    .view.text(self.face);
+                throw new Error("Robot: can't move there");
         }
 
         if (self
@@ -85,9 +89,50 @@ function Robot() {
                 .map
                 .cells[self.x][self.y]
                 .view.text(self.face);
-            return false;
+                return false;
+            //throw new Error("Robot: can't go into the wall");
+            //return false;
         }
 
+    };
+
+    this.destroy = function(direction) {
+
+        var newX = self.x;
+        var newY = self.y;
+
+        switch(direction) {
+            case 'up':
+                newY--;
+                break;
+            case 'right':
+                newX++;
+                break;
+            case 'down':
+                newY++;
+                break;
+            case 'left':
+                newX--;
+                break;
+        }
+
+        if (self.map.cells[newX][newY].type==='wall') {
+            self.map.cells[newX][newY].type='space';
+            self.map.cells[newX][newY].symbol=' ';
+            self.map.cells[newX][newY].view.text(' ');
+        }
+    };
+
+    this.standingOn = function(symbol) {
+        if (typeof(symbol) !== 'undefined') {
+            return self.map.cells[self.x][self.y].symbol === symbol;
+        } else {
+            return self.map.cells[self.x][self.y].symbol;
+        }
+    };
+
+    this.die = function() {
+        throw new Error('Robot has died.');
     };
 
     this.finished = function() {
@@ -100,16 +145,16 @@ function Robot() {
     this.move = this.walk;
 
     this.left = function() {
-        self.move('left');
+        return self.move('left');
     };
     this.right = function() {
-        self.move('right');
+        return self.move('right');
     };
     this.down = function() {
-        self.move('down');
+        return self.move('down');
     };
     this.up = function() {
-        self.move('up');
+        return self.move('up');
     };
 
 }

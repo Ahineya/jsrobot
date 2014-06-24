@@ -8,21 +8,93 @@
                 "file": "levels/maps/first.map"
             },
             "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>You can write your code in the dark grey area at bottom.</p><p>You are a robot, that smiling face represents you. \"#\" symbol is a wall. \"_\" is a start. \"f\" is a finish, it's your goal at this level.</p><p></p><p>In this code scope variable R is the robot object.</p><p>In each level you need to figure out what code you need to write to solve the task.</p><p>Write \"<span class='code'>R.right();</span>\" to proceed.</p>",
-            "before": "intervals.push(\n\tsetInterval(function(){",
+            "before": "intervals.push(\n\tsetInterval(function(){\n\t\ttry {",
             "code": "",
-            "after": "\n\t},500)\n);"
+            "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},300)\n);"
         },
         {
-            "name": "Baby steps two",
+            "name": "Can you go diagonal?",
             "map": {
                 "width": 7,
                 "height": 7,
                 "file": "levels/maps/second.map"
             },
-            "description": "<p><span class='story'>Two *Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>You can write your code in the dark grey area at bottom.</p><p>You are a robot, that smiling face represents you. \"#\" symbol is a wall. \"_\" is a start. \"f\" is a finish, it's your goal at this level.</p><p></p><p>In this code scope variable R is the robot object.</p><p>In each level you need to figure out what code you need to write to solve the task.</p><p>Write \"<span class='code'>R.right();</span>\" to proceed.</p>",
-            "before": "intervals.push(\n\tsetInterval(function(){",
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>You can use each of robot moving methods: <span class='code'>R.left();</span><span class='code'>R.right();</span><span class='code'>R.up();</span><span class='code'>R.down();</span></p>",
+            "before": "intervals.push(\n\tsetInterval(function(){\n\t\ttry {",
             "code": "",
-            "after": "\n\t},500)\n);"
+            "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+        },
+        {
+            "name": "Variables training",
+            "map": {
+                "width": 7,
+                "height": 5,
+                "file": "levels/maps/variables.map"
+            },
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>Robot has a moving method, that accepts string direction parameter: <span class='code'>R.move('left');</span><span class='code'>R.move('right');</span><span class='code'>R.move('up');</span><span class='code'>R.move('down');</span></p>",
+            "before": "intervals.push(\n\tsetInterval(function(){\n\t\ttry {",
+            "code": "",
+            "after": "\n\t\t\tR.move(direction)\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+        },
+        {
+            "name": "Robot walking commands",
+            "map": {
+                "width": 12,
+                "height": 5,
+                "file": "levels/maps/basics-labyrinth.map"
+            },
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You haven't enough rights to be in Snake Chamber. Please, proceed to exit.</span></p>",
+            "before": "try {",
+            "code": "",
+            "after": "\n} catch(e) {\n\terror(e, intervals, R);\n}"
+        },
+        {
+            "name": "Harder walking algorithms",
+            "map": {
+                "width": 12,
+                "height": 5,
+                "file": "levels/maps/basics-labyrinth.map"
+            },
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You haven't enough rights to be in Snake Chamber. Please, proceed to exit.</span></p><p><br></p><p>Remember that robot walking functions returns false if robot trying to go to the wall.</p><p>I'm giving you a free initialized variable. Enjoy.</p>",
+            "before": "var temp = 0;\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {",
+            "code": "",
+            "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+        },
+        {
+            "name": "Hello, regexp",
+            "map": {
+                "width": 7,
+                "height": 3,
+                "file": "levels/maps/basics-destroy.map"
+            },
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are disobeying our instructions. Wait in this room until guards came.</span></p><p><br></p><p>Regexps. Cool thing, eh?</p>",
+            "before": "var regexp = /[^a-z0-9]/;\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {",
+            "code": "",
+            "after": "\n\t\tif(regexp.test(key)) {R.destroy('right');} } catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+        },
+        {
+            "name": "First death",
+            "map": {
+                "width": 8,
+                "height": 5,
+                "file": "levels/maps/basics-first-death.map"
+            },
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are still disobeying instructions. Prepare to be desintegrated.</span></p><p><br></p><p>Robots have <span class='code'>R.standindOn(char)</span> instruction. It returns true, if robot standing on char symbol.</p>",
+            "before": "\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
+            "code": "",
+            "after": "\n\t\t\tR.right();\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+        },
+        {
+            "name": "Another labyrinth",
+            "map": {
+                "width": 15,
+                "height": 15,
+                "file": "levels/maps/basics-second-labyrinth.map"
+            },
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Try to escape from labyrinth of doom! Bzzz-zzz.</span></p><p><br></p><p>If <span class='code'>R.standindOn(char)</span> called without params, it returns symbol robot stands. And remember, that start marked with \"_\" symbol.</p>",
+            "before": "var temp = 0;\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
+            "code": "",
+            "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
         }
     ]
 }
