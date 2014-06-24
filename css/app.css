@@ -19,6 +19,11 @@ code {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.name {
+    color: #cccccc;
+    padding: 10px;
+}
+
 .description {
     color: #cccccc;
     padding: 10px;

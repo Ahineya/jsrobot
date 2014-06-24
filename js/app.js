@@ -1,8 +1,116 @@
 (function() {
 
     var R;
+    var m;
 
-    function loadTest(options) {
+    var levels = {};
+    var currentLevel = 0;
+
+    $.get('/levels/levels.json')
+        .success(function(data) {
+
+            var levels = data;
+
+            var c = 0;
+
+            function loadNextLevel() {
+                $('.overlay').hide();
+                for (var level in levels) {
+                    if (levels.hasOwnProperty(level)) {
+                        for (var i = 0; i<level.length; i++) {
+                            if (c === currentLevel) {
+                                if (typeof(levels[level][c])!=='undefined') {
+                                    loadLevel(levels[level][c]);
+                                    currentLevel = c+1;
+                                }
+                                break;
+                            }
+
+                            c++;
+                        }
+                    }
+                }
+            }
+
+            loadNextLevel();
+
+            $('.next').off('click').on("click", function() {
+                loadNextLevel();
+            });
+
+        });
+
+    function loadLevel(level) {
+
+        if (m instanceof Map) {
+            m.reload({
+                width: level.map.width,
+                height: level.map.height,
+                map: level.map.file,
+                description: level.description,
+                before: level.before,
+                after: level.after,
+                code: level.code
+            });
+        } else {
+            m = new Map({
+                width: level.map.width,
+                height: level.map.height,
+                color: "green",
+                backgroundColor: "black"
+            });
+        }
+
+        m.fillFromFile(level.map.file, function(data) {
+            m.display();
+            R = new Robot();
+            R.assignMap(m);
+            R.place();
+        });
+
+        $('.name').html("Level: "+level.name);
+        $('.description').html(level.description);
+
+        $('.before code').text(level.before);
+        $('.code code').text("\n"+level.code+"\n\n");
+        $('.after code').text(level.after);
+
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e);});
+
+        $('.run').off('click').on('click', function() {
+
+            $('.error').hide();
+
+            var r = new Runner({
+                robot: R,
+                before:
+                    level.before,
+                after:
+                    level.after
+            });
+
+            r.run(
+                $('.code code').text()
+            );
+
+        });
+
+        var tmr = setInterval(function() {
+            if (R.finished()) {
+                $('.overlay').show();
+                $('.success-wrapper').css('marginTop', $('.overlay').height() / 2 - $('.success-wrapper').height() / 2);
+                clearInterval(tmr);
+            }
+        }, 200);
+
+        $('.reload').off('click').on('click', function() {
+            $('.error').hide();
+            R.map.redraw();
+            R.place();
+        });
+    }
+
+/*    function loadTest(options) {
 
         var m = new Map({
             width: options.width,
@@ -127,6 +235,6 @@
                     });
                 }
             }
-        });
+        });*/
 
 })();
