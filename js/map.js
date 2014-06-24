@@ -122,4 +122,41 @@ function Map(options) {
         }
     };
 
+    this.remove = function() {
+        $(self.options.container + " ." + self.options.wrapperClass).remove();
+    };
+
+    this.reload = function(options) {
+
+        $(self.options.container + " ." + self.options.wrapperClass).remove();
+
+        this.options = {
+            width: options.width || 5,
+            height: options.height || 5,
+            container: options.container || ".container",
+            wrapperClass: options.wrapperClass || "map-wrapper",
+            columnClass: options.columnClass || "map-column",
+            rowClass: options.rowClass || "map-row",
+            cellClass: options.cellClass || "map-cell",
+            cellSize: options.cellSize || 20
+        };
+
+        this.cells = [];
+
+        for (var y = 0; y < this.options.height; y++) {
+            for(var x = 0; x < this.options.width; x++) {
+                if (typeof(this.cells[x]) === 'undefined') {
+                    this.cells[x] = [];
+                }
+                this.cells[x][y] = {
+                    symbol: " ",
+                    type: "space",
+                    color: "black",
+                    backgroundColor: "white"
+                };
+            }
+        }
+
+    };
+
 }

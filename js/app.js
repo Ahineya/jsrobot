@@ -44,12 +44,72 @@
 
         });
 
+        var tmr = setInterval(function() {
+            if (R.finished()) {
+                $('.overlay').show();
+                $('.success-wrapper').css('marginTop', $('.overlay').height() / 2 - $('.success-wrapper').height() / 2);
+                clearInterval(tmr);
+            }
+        }, 200);
+
         $('.reload').on('click', function() {
             $('.error').hide();
             R.map.redraw();
             R.place();
         });
+
+        $('.next').off('click').on("click", function() {
+            //m.remove();
+            $.get('/levels/levels.json')
+                .success(function(levels) {
+                    for (var level in levels) {
+                        if (levels.hasOwnProperty(level)) {
+                            console.log(level, levels[level]);
+                            m.reload({
+                                width: levels[level][1].map.width,
+                                height: levels[level][1].map.height,
+                                map: levels[level][1].map.file,
+                                description: levels[level][1].description,
+                                before: levels[level][1].before,
+                                after: levels[level][1].after,
+                                code: levels[level][1].code
+                            });
+
+                        }
+                    }
+
+                    m.fillFromFile(levels[level][1].map.file, function(data) {
+                        m.display();
+                        R = new Robot();
+                        R.assignMap(m);
+                        R.place();
+                    });
+
+                    $('.description').html(levels[level][1].description);
+
+                    $('.before code').text(levels[level][1].before);
+                    $('.code code').text("\n"+levels[level][1].code+"\n\n");
+                    $('.after code').text(levels[level][1].after);
+
+                    $('pre code').each(function(i, e) {hljs.highlightBlock(e);});
+
+                    $('.overlay').hide();
+
+                    var tmr = setInterval(function() {
+                        if (R.finished()) {
+                            $('.overlay').show();
+                            $('.success-wrapper').css('marginTop', $('.overlay').height() / 2 - $('.success-wrapper').height() / 2);
+                            clearInterval(tmr);
+                        }
+                    }, 200);
+
+                });
+
+        });
+
     }
+
+
 
     $.get('/levels/levels.json')
         .success(function(levels) {

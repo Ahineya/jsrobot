@@ -8,6 +8,7 @@ body {
     width: 320px;
     margin: 0 auto;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .code code {
@@ -36,6 +37,38 @@ code {
 
 .description span.story {
     font-size: 1.1em;
+}
+
+.code-wrapper {
+    position: relative;
+}
+
+.success-wrapper {
+    position: relative;
+    margin: 0px auto;
+    width: 320px;
+    text-align: center;
+}
+
+.success-wrapper p {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    font-size: 18px;
+    padding: 5px;
+}
+
+.overlay {
+    background-color: rgba(39, 174, 96, 0.5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: none;
+}
+
+.code-wrapper button {
+    background-color: rgba(39, 174, 96, 1);
 }
 
 .error {

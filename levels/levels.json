@@ -11,6 +11,18 @@
             "before": "for (var i = 0; i<=20 ; i++) {",
             "code": "",
             "after": "\tif (R.finished()) {\n\t\tbreak;\n\t};\n}"
+        },
+        {
+            "name": "Baby steps two",
+            "map": {
+                "width": 20,
+                "height": 5,
+                "file": "levels/maps/first.map"
+            },
+            "description": "<p><span class='story'>Two *Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>You can write your code in the dark grey area at bottom.</p><p>You are a robot, that smiling face represents you. \"#\" symbol is a wall. \"_\" is a start. \"f\" is a finish, it's your goal at this level.</p><p></p><p>In this code scope variable R is the robot object.</p><p>In each level you need to figure out what code you need to write to solve the task.</p><p>Write \"<span class='code'>R.right();</span>\" to proceed.</p>",
+            "before": "for (var i = 0; i<=20 ; i++) {",
+            "code": "",
+            "after": "\tif (R.finished()) {\n\t\tbreak;\n\t};\n}"
         }
     ]
 }
