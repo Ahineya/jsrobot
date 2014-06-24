@@ -1,4 +1,4 @@
-function Runner(options) {
+function Runner(options, intervals) {
     var R = options.robot;
 
     var before = options.before;

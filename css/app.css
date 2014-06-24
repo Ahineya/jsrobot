@@ -1,6 +1,148 @@
 body {
     background-color: black;
     font-family: Roboto, Geneva, Arial, Helvetica, sans-serif;
+    min-width: 340px;
+    min-height: 550px;
+}
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.selecting {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.links {
+    position: fixed;
+    right: 2%;
+    top: 0;
+    padding: 3px;
+    color: black;
+    z-index: 1;
+}
+
+.all-levels, .about {
+    background-color: #cccccc;
+    cursor: pointer;
+    display: inline-block;
+    padding: 3px;
+}
+
+.all-levels:hover, .about:hover {
+    background-color: #f0f0f0;
+}
+
+.levels {
+    position: fixed;
+    right: 2%;
+    top: 2%;
+    left: 2%;
+    bottom: 2%;
+    padding: 3px;
+    color: black;
+    background-color: #cccccc;
+    z-index: 2;
+    display: none;
+    overflow-y: auto;
+}
+
+.cross {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 1.5em;
+}
+
+.cross:hover {
+    background-color: grey;
+}
+
+.levels .greeting {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #cccccc;
+    min-height: 540px;
+}
+
+.levels .greeting .words {
+    position: relative;
+    width: 50%;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.levels .greeting .words h3 {
+    padding-bottom: 5px;
+}
+.levels .greeting .words p {
+    padding-bottom: 12px;
+}
+.levels .greeting .words .code {
+    background-color: #f0f0f0;
+    margin: 2px;
+    display: inline-block;
+}
+
+.levels .greeting .bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+}
+.levels .greeting .select-level {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+}
+
+.levels .level-group {
+    width: 33.3%;
+    padding: 20px;
+    position: relative;
+    float: left;
+}
+
+.levels .level-name {
+    font-size: 1.2em;
+    padding: 3px;
+}
+
+.levels .level {
+    margin: 3px;
+    margin-bottom: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: gray;
+    color: #f0f0f0;
+}
+
+.levels .level:hover {
+    background-color: #707070;
+}
+
+.controls {
+    position: relative;
+    float: left;
+    width: 49%;
 }
 
 .buttons {
@@ -15,13 +157,20 @@ body {
     background: #cccccc;
 }
 
-code {
+.code {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    -webkit-touch-callout: initial;
+    -webkit-user-select: initial;
+    -khtml-user-select: initial;
+    -moz-user-select: initial;
+    -ms-user-select: initial;
+    user-select: initial;
 }
 
 .name {
     color: #cccccc;
     padding: 10px;
+    font-size: 1.2em;
 }
 
 .description {
@@ -129,4 +278,35 @@ code {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+
+@media screen and (max-width: 980px) {
+    body {
+        font-size: 12px;
+    }
+    .controls-first {
+        zoom: 0.8;
+        -moz-transform: scale(0.8);
+    }
+    .levels .greeting .words {
+        position: relative;
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    body {
+        font-size: 12px;
+    }
+    .controls {
+        width: 100%;
+        float: none;
+    }
+    .levels .greeting .words {
+        position: relative;
+        width: 90%;
+        padding: 15px;
+    }
+
 }

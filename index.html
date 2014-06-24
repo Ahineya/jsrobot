@@ -11,6 +11,61 @@
     <script>hljs.configure({tabReplace: '<span class="indent">\t</span>'});</script>
 </head>
 <body>
+
+<div class="links">
+    <div class="all-levels">
+        All levels
+    </div>
+    <div class="about">
+        About
+    </div>
+</div>
+
+<div class="levels">
+    <div class="cross">
+        &times;
+    </div>
+    <div class="levels-wrapper">
+
+    </div>
+    <div class="greeting">
+        <div class="words">
+            <h3>Greetings!</h3>
+            <p>You want to try my Javascript challenge, eh?</p>
+            <p>You can try.</p>
+            <p>
+                There are some levels group - the simplest can teach you the basics of JavaScript.<br />
+                The hardest can be solved only after deep thinking.
+            </p>
+            <p>
+                In all challenges you controls the robot - a "☺" character. You'll like that guy, I guarantee it.
+            </p>
+            <p>
+                In JavaScript, "R" is our robot variable. It has walk method:<br>
+                <span class="code">R.walk(direction);</span><br>
+                where direction is a string containing "left", "right", "up" or "down".<br>
+                Also there are an aliases for walk function:<br>
+                <span class="code">R.move(direction);</span><br>
+                And <span class="code">R.left();</span><span class="code">R.right();</span><span class="code">R.up();</span><span class="code">R.down();</span>
+            </p>
+            <p>
+                In each level you need to navigate robot to the finish cell. It marked by "f" sign.<br>
+                When robot walks, you can see a "_" symbol. It is a mark for robot's starting place, nothing else.<br>
+                "#" sign is a wall, robot can't walk through it.
+            </p>
+            <p>
+                You can use console.log and other dirty hacks, but shame on you if so.
+                If you want to proud of a beating all challenges, play fairly.
+            </p>
+        </div>
+        <div class="bottom">
+            <button class="select-level nephritis-flat-button">Select level</button>
+        </div>
+    </div>
+</div>
+
+<div class="controls controls-first">
+
     <div class="container">
 
     </div>
@@ -20,6 +75,9 @@
         <button class="reload alizarin-flat-button">Reload</button>
     </div>
 
+</div>
+
+<div class="controls controls-second">
     <div class="name"></div>
     <div class="description"></div>
     <div class="error"></div>
@@ -34,7 +92,7 @@
             </div>
         </div>
         <div class="before"><pre><code>for (var i = 0; i<=20 ; i++) {</code></pre></div>
-        <div class="code"><pre><code contenteditable="true">
+        <div class="code"><pre><code contenteditable="true" spellcheck="false">
             /*write your code here*/
         </code></pre></div>
         <div class="after"><pre><code>
@@ -45,6 +103,9 @@
 
         </code></pre></div>
     </div>
+
+</div>
+
     <script src="js/map.js"></script>
     <script src="js/robot.js"></script>
     <script src="js/app.js"></script>
