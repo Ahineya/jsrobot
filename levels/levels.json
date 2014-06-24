@@ -63,7 +63,7 @@
         {
             "name": "Hello, regexp",
             "map": {
-                "width": 7,
+                "width": 8,
                 "height": 3,
                 "file": "levels/maps/basics-destroy.map"
             },
@@ -95,6 +95,18 @@
             "before": "var temp = 0;\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
             "code": "",
             "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+        },
+        {
+            "name": "More regexps",
+            "map": {
+                "width": 9,
+                "height": 3,
+                "file": "levels/maps/basics-more-regexps.map"
+            },
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are escaped from labyrinth! But what do you do now?</span></p><p><br></p><p>Regexps. I'm loving it!</p>",
+            "before": "\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
+            "code": "var key = '';",
+            "after": "\n\t\t\tR.right();\n\t\t\tvar r = /<([a-z]{3})>(.*)<\\/\\1>/; \n\t\t\tif (r.exec(key)[2] === 'key') {\n\t\t\t\tR.destroy('right');\n\t\t\t} \n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
         }
     ]
 }
