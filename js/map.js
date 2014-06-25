@@ -4,6 +4,7 @@ function Map(options) {
 
     var SYMBOL_TYPES = {
         '#': 'wall',
+        '$': 'wall',
         'space': 'space',
         '_': 'start',
         'f': 'finish'
@@ -27,6 +28,8 @@ function Map(options) {
         for(var x = 0; x < this.options.width; x++) {
             if (typeof(this.cells[x]) === 'undefined') {
                 this.cells[x] = [];
+            }
+            if (typeof(this.base[x]) === 'undefined') {
                 this.base[x] = [];
             }
             this.cells[x][y] = {
@@ -53,6 +56,8 @@ function Map(options) {
             for(var x = 0; x < this.options.width; x++) {
                 if (typeof(this.cells[x]) === 'undefined') {
                     this.cells[x] = [];
+                }
+                if (typeof(this.base[x]) === 'undefined') {
                     this.base[x] = [];
                 }
                 this.cells[x][y] = {
@@ -127,11 +132,18 @@ function Map(options) {
 
     };
 
+    this.append = function(func) {
+        eval(func);
+        console.log(f);
+        f.apply(this);
+    };
+
     this.redraw = function() {
         for (var y = 0; y < this.options.height; y++) {
             for(var x = 0; x < this.options.width; x++) {
 
                 self.cells[x][y].view.text(self.base[x][y].symbol);
+                self.cells[x][y].view.css('color', self.base[x][y].color);
                 self.cells[x][y].symbol = self.base[x][y].symbol;
                 self.cells[x][y].type = self.base[x][y].type;
 

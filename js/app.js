@@ -14,6 +14,10 @@
         $('.levels').show();
     }
 
+    if (history.state) {
+        nextLevel = history.state.levelId;
+    }
+
     $('.all-levels').on("click", function() {
         $('.levels').show();
         $('.greeting').hide();
@@ -55,13 +59,14 @@
 
             if (levels.hasOwnProperty(level)) {
                 for (var i = 0; i<=levels[level].length; i++) {
-                    console.log(c);
+                    //console.log(c);
 
                     if (c === nextLevel) {
                         if (typeof(levels[level][c])!=='undefined') {
                             loadLevel(levels[level][c]);
                             nextLevel = c+1;
                             window.location.hash = c;
+                            history.replaceState({'levelId':c}, "Jsrobot: level "+ c);
                         } else {
                             $('.greeting').hide();
                             $('.levels').show();
@@ -105,6 +110,7 @@
     function loadLevel(level) {
 
         $('.container').empty();
+        $('.error').hide();
 
         if (m instanceof Map) {
             m.reload({
@@ -130,6 +136,9 @@
         m.fillFromFile(level.map.file, function(data) {
             $('.container').empty();
             m.display();
+            if (typeof(level.map.mapfunc) !== 'undefined') {
+                m.append(level.map.mapfunc);
+            }
             R = new Robot();
             R.assignMap(m);
             R.place();
@@ -162,7 +171,9 @@
                 before:
                     level.before,
                 after:
-                    level.after
+                    level.after,
+                runnerfunc:
+                    level.runnerfunc || '(function() {})'
             }, intervals);
 
             r.run(

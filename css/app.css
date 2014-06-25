@@ -164,6 +164,10 @@ body {
     background: #cccccc;
 }
 
+.code-wrapper code {
+    overflow-y: auto;
+}
+
 .code {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     -webkit-touch-callout: initial;
@@ -205,6 +209,7 @@ body {
 }
 
 .code-wrapper {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     position: relative;
 }
 

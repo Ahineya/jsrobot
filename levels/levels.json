@@ -8,9 +8,9 @@
                 "file": "levels/maps/first.map"
             },
             "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>You can write your code in the dark grey area at bottom.</p><p>You are a robot, that smiling face represents you. \"#\" symbol is a wall. \"_\" is a start. \"f\" is a finish, it's your goal at this level.</p><p></p><p>In this code scope variable R is the robot object.</p><p>In each level you need to figure out what code you need to write to solve the task.</p><p>Write \"<span class='code'>R.right();</span>\" to proceed.</p>",
-            "before": "intervals.push(\n\tsetInterval(function(){\n\t\ttry {",
+            "before": "intervals.push(\n    setInterval(function(){\n        try {",
             "code": "",
-            "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},300)\n);"
+            "after": "\n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },300)\n);"
         },
         {
             "name": "Can you go diagonal?",
@@ -20,9 +20,9 @@
                 "file": "levels/maps/second.map"
             },
             "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>You can use each of robot moving methods: <span class='code'>R.left();</span><span class='code'>R.right();</span><span class='code'>R.up();</span><span class='code'>R.down();</span></p>",
-            "before": "intervals.push(\n\tsetInterval(function(){\n\t\ttry {",
+            "before": "intervals.push(\n    setInterval(function(){\n        try {",
             "code": "",
-            "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+            "after": "\n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },500)\n);"
         },
         {
             "name": "Variables training",
@@ -31,10 +31,10 @@
                 "height": 5,
                 "file": "levels/maps/variables.map"
             },
-            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>Robot has a moving method, that accepts string direction parameter: <span class='code'>R.move('left');</span><span class='code'>R.move('right');</span><span class='code'>R.move('up');</span><span class='code'>R.move('down');</span></p>",
-            "before": "intervals.push(\n\tsetInterval(function(){\n\t\ttry {",
-            "code": "",
-            "after": "\n\t\t\tR.move(direction)\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>Robot has a moving method, that accepts string direction parameter: <span class='code'>R.move('left');</span><span class='code'>R.move('right');</span><span class='code'>R.move('up');</span><span class='code'>R.move('down');</span><p>Read all code carefully and try to understand all executing algorithm. Read an error messages&nbsp;&mdash; sometimes they contains answers.</p></p>",
+            "before": "intervals.push(\n    setInterval(function(){\n        try {",
+            "code": "var direction = 'To Dublin';",
+            "after": "\n            R.move(direction)\n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },500)\n);"
         },
         {
             "name": "Robot walking commands",
@@ -46,7 +46,7 @@
             "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You haven't enough rights to be in Snake Chamber. Please, proceed to exit.</span></p>",
             "before": "try {",
             "code": "",
-            "after": "\n} catch(e) {\n\terror(e, intervals, R);\n}"
+            "after": "\n} catch(e) {\n    error(e, intervals, R);\n}"
         },
         {
             "name": "Harder walking algorithms",
@@ -56,9 +56,9 @@
                 "file": "levels/maps/basics-labyrinth.map"
             },
             "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You haven't enough rights to be in Snake Chamber. Please, proceed to exit.</span></p><p><br></p><p>Remember that robot walking functions returns false if robot trying to go to the wall.</p><p>I'm giving you a free initialized variable. Enjoy.</p>",
-            "before": "var temp = 0;\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {",
+            "before": "var temp = 0;\n\nintervals.push(\n    setInterval(function(){\n        try {",
             "code": "",
-            "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+            "after": "\n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },500)\n);"
         },
         {
             "name": "Hello, regexp",
@@ -67,10 +67,10 @@
                 "height": 3,
                 "file": "levels/maps/basics-destroy.map"
             },
-            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are disobeying our instructions. Wait in this room until guards came.</span></p><p><br></p><p>Regexps. Cool thing, eh?</p>",
-            "before": "var regexp = /[^a-z0-9]/;\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {",
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are disobeying our instructions. Wait in this room until guards came.</span></p><p><br></p><p>Regexps. Cool thing, eh? \"$\" represents a closed door. You need a key...</p><p>Technically, the door is the wall, which you can destroy via <span class='code'>R.destroy(direction);</span> Oh, I'm sorry. You can't. I can.</p>",
+            "before": "var regexp = /[^a-z0-9]/;\n\nintervals.push(\n    setInterval(function(){\n        try {",
             "code": "",
-            "after": "\n\t\tif(regexp.test(key)) {R.destroy('right');} } catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+            "after": "\n        if(regexp.test(key)) {R.destroy('right');} } catch(e) {\n            error(e, intervals, R);\n        }\n    },500)\n);"
         },
         {
             "name": "First death",
@@ -80,21 +80,22 @@
                 "file": "levels/maps/basics-first-death.map"
             },
             "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are still disobeying instructions. Prepare to be desintegrated.</span></p><p><br></p><p>Robots have <span class='code'>R.standingOn(char)</span> instruction. It returns true, if robot standing on char symbol.</p>",
-            "before": "\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
+            "before": "intervals.push(\n    setInterval(function(){\n        try {\n            if (R.standingOn('E')) {\n                R.die();\n            }",
             "code": "",
-            "after": "\n\t\t\tR.right();\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+            "after": "\n            R.right();\n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },500)\n);"
         },
         {
             "name": "Another labyrinth",
             "map": {
                 "width": 15,
                 "height": 15,
-                "file": "levels/maps/basics-second-labyrinth.map"
+                "file": "levels/maps/basics-second-labyrinth.map",
+                "mapfunc": "var f = function() {for(var i = 0; i<this.options.width; i++) {for (var j = 0; j<this.options.height; j++) {if(this.base[i][j].symbol === '#') {this.base[i][j].color = 'grey'} else if(/^\\d+$/.test(this.base[i][j].symbol)){this.base[i][j].color = 'lime'} else if(this.base[i][j].symbol === 'f'){this.base[i][j].color = '#f0f0f0'}  }}; this.redraw();}"
             },
-            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Try to escape from labyrinth of doom! Bzzz-zzz.</span></p><p><br></p><p>If <span class='code'>R.standingOn(char)</span> called without params, it returns symbol robot stands. And remember, that start marked with \"_\" symbol.</p>",
-            "before": "var temp = 0;\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Try to escape from labyrinth of doom! Bzzz-zzz.</span></p><p><br></p><p>If <span class='code'>R.standingOn(char)</span> called without params, it returns symbol robot stands. And remember, that start marked with \"_\" symbol.</p><p>P.s. you see? I can paint it! :)</p>",
+            "before": "var temp = 0;\n\nintervals.push(\n    setInterval(function(){\n        try {\n            if (R.standingOn('E')) {\n                R.die();\n            }",
             "code": "",
-            "after": "\n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+            "after": "\n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },500)\n);"
         },
         {
             "name": "More regexps",
@@ -103,10 +104,37 @@
                 "height": 3,
                 "file": "levels/maps/basics-more-regexps.map"
             },
-            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are escaped from labyrinth! But what do you do now?</span></p><p><br></p><p>Regexps. I'm loving it!</p>",
-            "before": "\n\nintervals.push(\n\tsetInterval(function(){\n\t\ttry {\n\t\t\tif (R.standingOn('E')) {\n\t\t\t\tR.die();\n\t\t\t}",
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are escaped from labyrinth of doom! But what would you do now?</span></p><p><br></p><p>Regexps. I'm loving it!</p>",
+            "before": "intervals.push(\n    setInterval(function(){\n        try {",
             "code": "var key = '';",
-            "after": "\n\t\t\tR.right();\n\t\t\tvar r = /<([a-z]{3})>(.*)<\\/\\1>/; \n\t\t\tif (r.exec(key)[2] === 'key') {\n\t\t\t\tR.destroy('right');\n\t\t\t} \n\t\t} catch(e) {\n\t\t\terror(e, intervals, R);\n\t\t}\n\t},500)\n);"
+            "after": "\n            R.right();\n            var r = /<([a-z]{3})>(.*)<\\/\\1>/; \n            if (r.exec(key)[2] === 'key') {\n                R.destroy('right');\n            } \n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },500)\n);"
+        },
+        {
+            "name": "Keyword: directions",
+            "map": {
+                "width": 19,
+                "height": 19,
+                "file": "levels/maps/basics-pass-guess.map",
+                "mapfunc": "var f = function() {for(var i = 0; i<this.options.width; i++) {for (var j = 0; j<this.options.height; j++) {if(this.base[i][j].symbol === '#') {this.base[i][j].color = 'grey'} else if(/^\\d+$/.test(this.base[i][j].symbol)){this.base[i][j].color = 'lime'} else if(this.base[i][j].symbol === 'f'){this.base[i][j].color = '#f0f0f0'}  }}; this.redraw();}"
+            },
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You will be straying in this hallways forever.</span></p><p><br></p><p>Pay attention on what symbol are you staying.</p>",
+            "before": "var direction = 'right';\nintervals.push(\n    setInterval(function(){\n        try {",
+            "code": "",
+            "after": "\n            R.move(direction);\n            var directions = {\n                'v': 'down',\n                '>': 'right',\n                '^': 'up',\n                '<': 'left'\n            }\n            if( (!R.standingOn(' ')) && (!R.standingOn('f'))) {\n                if (typeof(directions[R.standingOn()])!=='undefined') {\n                    direction = directions[R.standingOn()];\n                }\n            } \n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },200)\n);"
+        },
+        {
+            "name": "Conditional demolition",
+            "map": {
+                "width": 11,
+                "height": 3,
+                "file": "levels/maps/basics-conditional-demolition.map",
+                "mapfunc": "var f = function() {for(var i = 0; i<this.options.width; i++) {for (var j = 0; j<this.options.height; j++) {if(this.base[i][j].symbol === '#') {this.base[i][j].color = 'grey'} else if(/^\\d+$/.test(this.base[i][j].symbol)){this.base[i][j].color = 'lime'} else if(this.base[i][j].symbol === 'f'){this.base[i][j].color = '#f0f0f0'}  }}; this.redraw();}"
+            },
+            "runnerfunc": "(function(code) { if(/steps|counter/.test(code)) {throw new Error('Robot: that would be very easy... You can do it without using steps or counter variables. By the way, do you know, that R is an object, and objects can have properties?.');}} )(code);",
+            "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Some closed doors would stop you. For centuries.</span></p><p><br></p><p></p>",
+            "before": "var counter = 0; var steps=0;\nintervals.push(\n    setInterval(function(){\n        try {",
+            "code": "var key = '';",
+            "after": "\n            steps++;\n            if(R.standingOn('1')){\n                counter++;\n            } if( (steps === 4) &&\n                (R.standingOn('1')) &&\n                (counter<=2) )\n            {\n                R.destroy('right');\n            }\n            if((R.standingOn('2')) &&\n                (/^<(.{1})>\\1<(.{1})>\\2<(.{1})>\\3$/).test(key)) \n            {\n                R.destroy('right');\n            }\n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },200)\n);"
         }
     ]
 }

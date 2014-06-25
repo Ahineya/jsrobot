@@ -131,6 +131,8 @@ function Robot() {
         }
     };
 
+    this.stayingOn = this.standingOn;
+
     this.die = function() {
         throw new Error('Robot has died.');
     };
