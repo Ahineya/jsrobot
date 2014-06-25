@@ -93,6 +93,9 @@
 
             $(window).on('hashchange', function() {
                 nextLevel = +window.location.hash.substring(1);
+                for (var intr in intervals) {
+                    clearInterval(intervals[intr]);
+                }
                 loadNextLevel(levels);
             });
 
@@ -179,6 +182,7 @@
             r.run(
                 $('.code code').text()
             );
+            $('.error').hide();
 
         });
 
