@@ -50,6 +50,8 @@ function Robot() {
         var newX = self.x;
         var newY = self.y;
 
+        direction = direction.toLowerCase();
+
         switch(direction) {
             case 'up':
                 newY--;

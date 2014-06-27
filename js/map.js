@@ -176,8 +176,15 @@ function Map(options) {
             for(var x = 0; x < this.options.width; x++) {
                 if (typeof(this.cells[x]) === 'undefined') {
                     this.cells[x] = [];
+                    this.base[x] = [];
                 }
                 this.cells[x][y] = {
+                    symbol: " ",
+                    type: "space",
+                    color: "black",
+                    backgroundColor: "white"
+                };
+                this.base[x][y] = {
                     symbol: " ",
                     type: "space",
                     color: "black",
