@@ -11,46 +11,51 @@ function Map(options) {
     };
 
     this.options = {
-        width: options.width || 5,
-        height: options.height || 5,
-        container: options.container || ".container",
-        wrapperClass: options.wrapperClass || "map-wrapper",
-        columnClass: options.columnClass || "map-column",
-        rowClass: options.rowClass || "map-row",
-        cellClass: options.cellClass || "map-cell",
-        cellSize: options.cellSize || 20
+        width: 5,
+        height: 5,
+        container: ".container",
+        wrapperClass: "map-wrapper",
+        columnClass: "map-column",
+        rowClass: "map-row",
+        cellClass: "map-cell",
+        cellSize: 20
     };
+
+    $.extend(this.options, options);
 
     this.cells = [];
     this.base = [];
 
-    for (var y = 0; y < this.options.height; y++) {
-        for(var x = 0; x < this.options.width; x++) {
-            if (typeof(this.cells[x]) === 'undefined') {
-                this.cells[x] = [];
-            }
-            if (typeof(this.base[x]) === 'undefined') {
-                this.base[x] = [];
-            }
-            this.cells[x][y] = {
-                symbol: " ",
-                type: "space",
-                color: "black",
-                backgroundColor: "white"
-            };
-            this.base[x][y] = {
-                symbol: " ",
-                type: "space",
-                color: "black",
-                backgroundColor: "white"
-            };
+    var fillCells = function (cells, x, y) {
+        if (typeof(self[cells][x]) === 'undefined') {
+            self[cells][x] = [];
         }
+        self[cells][x][y] = {
+            symbol: " ",
+            type: "space",
+            color: "black",
+            backgroundColor: "white"
+        };
+    };
+
+    function init() {
+        for (var y = 0; y < self.options.height; y++) {
+            for (var x = 0; x < self.options.width; x++) {
+                fillCells('cells', x, y);
+                fillCells('base', x, y);
+            }
+        }
+        return {y: y, x: x};
     }
+
+    init();
 
     this.fillFromString = function(mapStr, color, backColor) {
 
         var len = mapStr.length;
         var current = 0;
+
+        init();
 
         for (var y = 0; y < this.options.height; y++) {
             for(var x = 0; x < this.options.width; x++) {
@@ -134,7 +139,6 @@ function Map(options) {
 
     this.append = function(func) {
         eval(func);
-        //console.log(f);
         f.apply(this);
     };
 
@@ -157,41 +161,13 @@ function Map(options) {
 
     this.reload = function(options) {
 
-        $(self.options.container + " ." + self.options.wrapperClass).remove();
+        this.remove();
 
-        this.options = {
-            width: options.width || 5,
-            height: options.height || 5,
-            container: options.container || ".container",
-            wrapperClass: options.wrapperClass || "map-wrapper",
-            columnClass: options.columnClass || "map-column",
-            rowClass: options.rowClass || "map-row",
-            cellClass: options.cellClass || "map-cell",
-            cellSize: options.cellSize || 20
-        };
+        $.extend(this.options, options);
 
         this.cells = [];
 
-        for (var y = 0; y < this.options.height; y++) {
-            for(var x = 0; x < this.options.width; x++) {
-                if (typeof(this.cells[x]) === 'undefined') {
-                    this.cells[x] = [];
-                    this.base[x] = [];
-                }
-                this.cells[x][y] = {
-                    symbol: " ",
-                    type: "space",
-                    color: "black",
-                    backgroundColor: "white"
-                };
-                this.base[x][y] = {
-                    symbol: " ",
-                    type: "space",
-                    color: "black",
-                    backgroundColor: "white"
-                };
-            }
-        }
+        init();
 
     };
 
