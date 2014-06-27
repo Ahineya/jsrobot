@@ -32,14 +32,14 @@ body {
     z-index: 1;
 }
 
-.all-levels, .about {
+.all-levels, .about, .reminder {
     background-color: #cccccc;
     cursor: pointer;
     display: inline-block;
     padding: 3px;
 }
 
-.all-levels:hover, .about:hover {
+.all-levels:hover, .about:hover, .reminder:hover {
     background-color: #f0f0f0;
 }
 
@@ -80,6 +80,7 @@ body {
     bottom: 0;
     background-color: #cccccc;
     min-height: 540px;
+
 }
 
 .levels .greeting .words {
@@ -89,16 +90,20 @@ body {
     margin: 0 auto;
 }
 
-.levels .greeting .words h3 {
+.levels .greeting .overview {
+    display: none;
+}
+
+.levels .greeting h3 {
     padding-bottom: 5px;
 }
-.levels .greeting .words p {
+.levels .greeting p {
     padding-bottom: 12px;
 }
-.levels .greeting .words p a, .levels .greeting .words p a:visited {
+.levels .greeting p a, .levels .greeting p a:visited {
     color: black;
 }
-.levels .greeting .words .code {
+.levels .greeting .code {
     background-color: #f0f0f0;
     margin: 2px;
     display: inline-block;
@@ -111,6 +116,15 @@ body {
     right: 0;
     height: 100px;
 }
+
+.levels .greeting .guide {
+    /*display: none;*/
+    /*position: relative;
+    width: 50%;
+    padding: 15px;
+    margin: 0 auto;*/
+}
+
 .levels .greeting .select-level {
     position: relative;
     margin: 0 auto;
@@ -320,6 +334,11 @@ body {
         float: none;
     }
     .levels .greeting .words {
+        position: relative;
+        width: 90%;
+        padding: 15px;
+    }
+    .levels .greeting .guide {
         position: relative;
         width: 90%;
         padding: 15px;

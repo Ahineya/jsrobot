@@ -134,7 +134,7 @@ function Map(options) {
 
     this.append = function(func) {
         eval(func);
-        console.log(f);
+        //console.log(f);
         f.apply(this);
     };
 

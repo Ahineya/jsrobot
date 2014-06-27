@@ -26,6 +26,14 @@
     $('.about').on('click', function() {
         $('.levels').show();
         $('.greeting').show();
+        $('.overview').show();
+        $('.guide').hide();
+    });
+    $('.reminder').on('click', function() {
+        $('.levels').show();
+        $('.greeting').show();
+        $('.overview').hide();
+        $('.guide').show();
     });
 
     $('.select-level').on("click", function() {
@@ -50,7 +58,7 @@
 
         levels = this.levels;
 
-        console.log('l:', levels);
+        //console.log('l:', levels);
 
         var c = 0;
 
@@ -85,7 +93,7 @@
 
             var levels = data;
 
-            console.log(levels);
+            //console.log(levels);
 
             fillLevelsDiv(levels);
 
@@ -182,7 +190,6 @@
             r.run(
                 $('.code code').text()
             );
-            $('.error').hide();
 
         });
 

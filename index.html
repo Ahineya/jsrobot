@@ -20,6 +20,9 @@
     <div class="about">
         About
     </div>
+    <div class="reminder">
+        Reminder
+    </div>
 </div>
 
 <div class="levels">
@@ -31,35 +34,54 @@
     </div>
     <div class="greeting">
         <div class="words">
-            <h3>Greetings!</h3>
-            <p>You want to try my Javascript challenge, eh?</p>
-            <p>You can try.</p>
-            <p>
-                There are some levels group - the simplest can teach you the basics of JavaScript.<br />
-                The hardest can be solved only after deep thinking.
-            </p>
-            <p>
-                In all challenges you controls the robot - a "☺" character. You'll like that guy, I guarantee it.
-            </p>
-            <p>
-                In JavaScript, "R" is our robot variable. It has walk method:<br>
-                <span class="code">R.walk(direction);</span><br>
-                where direction is a string containing "left", "right", "up" or "down".<br>
-                Also there are an aliases for walk function:<br>
-                <span class="code">R.move(direction);</span><br>
-                And <span class="code">R.left();</span><span class="code">R.right();</span><span class="code">R.up();</span><span class="code">R.down();</span>
-            </p>
-            <p>
-                In each level you need to navigate robot to the finish cell. It marked by "f" sign.<br>
-                When robot walks, you can see a "_" symbol. It is a mark for robot's starting place, nothing else.<br>
-                "#" sign is a wall, robot can't walk through it.
-            </p>
-            <p>
-                If you want to proud of a beating all challenges, play fairly.
-            </p>
-            <p>
-                If you found any bugs, please, write them to <a href="https://github.com/Ahineya/jsrobot/issues" target="_blank">https://github.com/Ahineya/jsrobot/issues</a>
-            </p>
+            <div class="overview">
+
+                <h3>Greetings!</h3>
+                <p>You want to try my Javascript challenge, eh?</p>
+                <p>You can try.</p>
+                <p>
+                    There are some levels group - the simplest can teach you the basics of JavaScript.<br />
+                    The hardest can be solved only after deep thinking.
+                </p>
+                <p>
+                    In all challenges you controls the robot - a "☺" character. You'll like that guy, I guarantee it.
+                </p>
+                <p>
+                    In each level you need to navigate robot to the finish cell. It marked by "f" sign.<br>
+                    When robot walks, you can see a "_" symbol. It is a mark for robot's starting place, nothing else.<br>
+                    "#" sign is a wall, robot can't walk through it.
+                </p>
+                <p>
+                    If you want to proud of a beating all challenges, play fairly.
+                </p>
+                <p>
+                    If you found any bugs, please, write them to <a href="https://github.com/Ahineya/jsrobot/issues" target="_blank">https://github.com/Ahineya/jsrobot/issues</a>
+                </p>
+                <p>
+                    Github repository <a href="https://github.com/Ahineya/jsrobot target="_blank"">here</a>
+                </p>
+            </div>
+            <div class="guide">
+                <p>Available robot functions:</p>
+                <p>
+                    Moving functions moves the robot in specified direction.
+                    There are this functions and shortcuts:<br>
+                    <span class="code">R.move(direction);</span><br>
+                    <span class="code">R.walk(direction);</span><br>
+                    <span class="code">R.right();</span><br>
+                    <span class="code">R.left();</span><br>
+                    <span class="code">R.up();</span><br>
+                    <span class="code">R.down();</span><br>
+                    If robot can't move in specified direction then this functions returns false, otherwise they returns true.
+                </p>
+                <p>
+                    Recognizing function:<br>
+                    <span class="code">R.standingOn(symbol);</span><br>
+                    <span class="code">R.standingOn();</span><br>
+                    If the symbol specified it returns true if robot stands on specified symbol, otherwise returns false.<br>
+                    If the symbol isn't specified it returns symbol that robot stands when calling this function.
+                </p>
+            </div>
         </div>
         <div class="bottom">
             <button class="select-level nephritis-flat-button">Select level</button>

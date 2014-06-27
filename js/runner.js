@@ -24,7 +24,7 @@ function Runner(options, intervals) {
                 throw new Error("Robot: do you really want to place comments in such simple code?");
             }
             if (/console/i.test(code)) {
-                throw new Error("Robot: I'm working on vacuum tubes. I have not console.");
+                throw new Error("Robot: I'm working on vacuum tubes. I have no console.");
             }
             if (/map/i.test(code)) {
                 throw new Error("Robot: map is reserved word. You can't use it.");
@@ -33,9 +33,8 @@ function Runner(options, intervals) {
             eval(before + code + after);
         }
         catch (e) {
-            $('.error')
-                .text(e.toString())
-                .show();
+            $('.error').text(e.toString()).show();
+            error(e, intervals, R);
         }
     };
 
