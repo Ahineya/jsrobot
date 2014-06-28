@@ -91,7 +91,7 @@ body {
 }
 
 .levels .greeting .overview {
-    display: none;
+    /*display: none;*/
 }
 
 .levels .greeting h3 {
@@ -123,6 +123,7 @@ body {
     width: 50%;
     padding: 15px;
     margin: 0 auto;*/
+    display: none;
 }
 
 .levels .greeting .select-level {
