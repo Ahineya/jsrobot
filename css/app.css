@@ -90,10 +90,6 @@ body {
     margin: 0 auto;
 }
 
-.levels .greeting .overview {
-    /*display: none;*/
-}
-
 .levels .greeting h3 {
     padding-bottom: 5px;
 }
@@ -118,11 +114,6 @@ body {
 }
 
 .levels .greeting .guide {
-    /*display: none;*/
-    /*position: relative;
-    width: 50%;
-    padding: 15px;
-    margin: 0 auto;*/
     display: none;
 }
 
