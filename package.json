@@ -14,7 +14,8 @@
       "http-server": "*"
   },
   "scripts": {
-    "test": "mocha-phantomjs test/test.html"
+    "test": "mocha-phantomjs test/test.html",
+    "start": "http-server -p 8090"
   },
   "repository": {
     "type": "git",
