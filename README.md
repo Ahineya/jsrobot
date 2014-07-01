@@ -6,13 +6,13 @@ JavaScript challenges web application
 
 Requires Node.js
 
-Clone or download this repository to a directory a webserver can serve.
+Clone or download this repository.
 
 Quickly get started from scratch by navigating to the repository folder and running;
 
 ```
-npm install http-server
-http-server -p 8090
+npm install
+npm start
 ```
 
 Open a browser at [localhost:8090](http://localhost:8090/)
