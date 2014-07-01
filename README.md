@@ -1,19 +1,36 @@
-jsrobot
-=======
+# jsrobot
 
 JavaScript challenges web application
 
-###Levels adding
+## How To Install
+
+Requires Node.js
+
+Clone or download this repository to a directory a webserver can serve.
+
+Quickly get started from scratch by navigating to the repository folder and running;
+
+```
+npm install http-server
+http-server -p 8090
+```
+
+Open a browser at [localhost:8090](http://localhost:8090/)
+
+## Adding Levels
+
 If you want to add a level, send pull-request with it.
 
 Each level consists of a map file and level description.
 
 In map files you could use any symbols as a space symbol, except pre-defined in map.js:
+```javascript
 '#': 'wall',
 '$': 'wall',
 ' ': 'space',
 '_': 'start',
 'f': 'finish'
+```
 
 Each level described in levels/levels.json in this way:
 ```json
