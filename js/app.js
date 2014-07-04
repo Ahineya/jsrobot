@@ -58,10 +58,11 @@
 
         $('.overlay').hide();
         for (var level in levels) {
-
+            if (found) {
+                break;
+            }
             if (levels.hasOwnProperty(level)) {
                 for (var i = 0; i < levels[level].length; i++) {
-                    console.log(c, nextLevel);
                     if (c === nextLevel) {
                         if (typeof(levels[level][i]) !== 'undefined') {
                             loadLevel(levels[level][i]);
