@@ -40,7 +40,7 @@ It needs to have such parameters:
 
 ```description``` - is a level description. In it you can use a ```<p></p>``` tag for paragraph,
 
-    ```<span class='story'></span>``` for story and ```<span class='code'></span>``` for code blocks.
+```<span class='story'></span>``` for story and ```<span class='code'></span>``` for code blocks.
     
 ```map.file``` - map file name.
 
