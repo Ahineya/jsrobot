@@ -38,9 +38,7 @@ It needs to have such parameters:
 
 ```name``` - level name
 
-```description``` - is a level description. In it you can use a ```<p></p>``` tag for paragraph,
-
-```<span class='story'></span>``` for story and ```<span class='code'></span>``` for code blocks.
+```description``` - is a level description. In it you can use a ```<p></p>``` tag for paragraph, ```<span class='story'></span>``` for story and ```<span class='code'></span>``` for code blocks.
     
 ```map.file``` - map file name.
 
