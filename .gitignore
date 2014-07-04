@@ -1,1 +1,4 @@
 node_modules/
+.idea/
+deploy.sh
+levels/levels.json

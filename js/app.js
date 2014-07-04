@@ -232,6 +232,16 @@
 
         var lid = 0;
 
+        var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
+        if (localStorage.getItem('version') !== '0.0.2') {
+            var idx = wonLevels.indexOf(9);
+            if (idx !== -1) {
+                wonLevels.splice(idx, 1);
+                localStorage.setItem("wonLevels", JSON.stringify(wonLevels));
+            }
+            localStorage.setItem("version", "0.0.2");
+        }
+
         for (var grp in levels) {
 
             var lgroup = $('<div></div>')
@@ -243,16 +253,6 @@
                 .text(grp)
                 .appendTo(lgroup);
 
-            var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
-            if (localStorage.getItem('version') !== '0.0.2') {
-                var idx = wonLevels.indexOf(9);
-                if (idx !== -1) {
-                    wonLevels.splice(idx, 1);
-                    localStorage.setItem("wonLevels", JSON.stringify(wonLevels));
-                }
-                localStorage.setItem("version", "0.0.2");
-            }
-
             if (levels.hasOwnProperty(grp)) {
                 for (var i = 0; i < levels[grp].length; i++) {
                     var lvl = $('<div></div>')
@@ -262,7 +262,7 @@
                         .off('click')
                         .on('click', bindClick)
                         .appendTo(lgroup);
-                    if (wonLevels.indexOf(i) !== -1) {
+                    if (wonLevels.indexOf(lid) !== -1) {
                         lvl.addClass('passed');
                     }
                     lid++;
