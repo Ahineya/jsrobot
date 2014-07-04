@@ -244,6 +244,14 @@
                 .appendTo(lgroup);
 
             var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
+            if (localStorage.getItem('version') !== '0.0.2') {
+                var idx = wonLevels.indexOf(9);
+                if (idx !== -1) {
+                    wonLevels.splice(idx, 1);
+                    localStorage.setItem("wonLevels", JSON.stringify(wonLevels));
+                    localStorage.setItem("version", "0.0.2");
+                }
+            }
 
             if (levels.hasOwnProperty(grp)) {
                 for (var i = 0; i < levels[grp].length; i++) {

@@ -1,6 +1,6 @@
 {
   "name": "jsrobot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript challenge web application",
   "main": "app.js",
   "directories": {
