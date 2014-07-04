@@ -1,0 +1,32 @@
+<group>Basics</group>
+<name>First death</name>
+<description>
+    <p><span class='story'>*Mechanical voice*:</span></p>
+    <p><span class='story'>&mdash; You are still disobeying instructions. Prepare to be desintegrated.</span></p>
+    <p><br></p>
+    <p>Robots have <span class='code'>R.standingOn(char)</span> instruction.
+    It returns true, if robot standing on char symbol.</p>
+</description>
+<map.file>basics-first-death.map</map.file>
+<map.mapcontent>########
+#   #f##
+#_   ^E#
+#   #E##
+########</map.mapcontent>
+<map.width>8</map.width>
+<map.height>5</map.height>
+<before>intervals.push(
+    setInterval(function() {
+        try {
+            if (R.standingOn('E')) {
+                R.die();
+            }
+</before>
+<after>
+            R.right();
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },500)
+);
+</after>

@@ -1,0 +1,46 @@
+<group>Basics</group>
+<name>Variables training</name>
+<description>
+    <p>
+        <span class='story'>*Mechanical voice*:</span>
+    </p>
+    <p>
+        <span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span>
+    </p>
+    <p><br /></p>
+    <p>
+        Robot has a moving method, that accepts string direction parameter:
+        <span class='code'>R.move('left');</span>
+        <span class='code'>R.move('right');</span>
+        <span class='code'>R.move('up');</span>
+        <span class='code'>R.move('down');</span>
+    </p>
+    <p>
+        Read all code carefully and try to understand all executing algorithm.
+        Read an error messages&nbsp;&mdash; sometimes they contains answers.
+    </p>
+</description>
+<map.file>basics-variables-training.map</map.file>
+<map.mapcontent>#######
+#     #
+# _ f #
+#     #
+#######</map.mapcontent>
+<map.width>7</map.width>
+<map.height>5</map.height>
+<before>
+intervals.push(
+    setInterval(function() {
+        try {
+</before>
+<code>
+var direction = 'To Dublin';
+</code>
+<after>
+            R.move(direction);
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },300)
+);
+</after>

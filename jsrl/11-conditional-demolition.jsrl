@@ -1,0 +1,70 @@
+<group>Basics</group>
+<name>Conditional demolition</name>
+<description>
+    <p><span class='story'>*Mechanical voice*:</span></p>
+    <p><span class='story'>&mdash; Some closed doors would stop you. For centuries.</span></p>
+    <p><br></p>
+    <p></p>
+</description>
+<map.file>basics-conditional-demolition.map</map.file>
+<map.mapcontent>###########
+#_ 1$ 2$f #
+###########</map.mapcontent>
+<map.width>11</map.width>
+<map.height>3</map.height>
+<map.mapfunc>
+var f = function() {
+    for(var i = 0; i<this.options.width; i++) {
+        for (var j = 0; j<this.options.height; j++) {
+            if(this.base[i][j].symbol === '#') {
+                this.base[i][j].color = 'grey';
+            } else if (/^\\d+$/.test(this.base[i][j].symbol)) {
+                this.base[i][j].color = 'lime';
+            } else if(this.base[i][j].symbol === 'f') {
+                this.base[i][j].color = '#f0f0f0';
+            }
+        }
+    };
+    this.redraw();
+}
+</map.mapfunc>
+<runnerfunc>
+(function(code) {
+    if(/steps|counter/.test(code)) {
+        throw new Error('Robot: that would be very easy... You can do it without using steps or counter variables. By the way, do you know, that R is an object, and objects can have properties?.');
+    }
+})(code);
+</runnerfunc>
+<before>
+var counter = 0;
+var steps=0;
+intervals.push(
+    setInterval(function() {
+        try {
+</before>
+<code>
+
+</code>
+<after>
+
+            steps++;
+            if(R.standingOn('1')){
+                counter++;
+            }
+            if( (steps === 4) &&
+                (R.standingOn('1')) &&
+                (counter<=2) )
+                {
+                    R.destroy('right');
+                }
+            if((R.standingOn('2')) &&
+                (/^<(.{1})>\\1<(.{1})>\\2<(.{1})>\\3$/).test(key))
+                {
+                    R.destroy('right');
+                }
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },200)
+);
+</after>

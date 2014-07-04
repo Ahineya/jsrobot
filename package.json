@@ -14,7 +14,8 @@
       "http-server": "*"
   },
   "scripts": {
-    "test": "mocha-phantomjs test/test.html",
+    "install": "node jsrl/build-levels.js",
+    "test": "mocha-phantomjs test/test.html && mocha test/jsrl-test.js -R spec",
     "start": "http-server -p 8090"
   },
   "repository": {

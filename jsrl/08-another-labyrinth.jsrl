@@ -1,0 +1,59 @@
+<group>Basics</group>
+<name>Another labyrinth</name>
+<description>
+    <p><span class='story'>*Mechanical voice*:</span></p>
+    <p><span class='story'>&mdash; Try to escape from labyrinth of doom! Bzzz-zzz.</span></p>
+    <p><br></p>
+    <p>If <span class='code'>R.standingOn(char)</span> called without params, it returns symbol robot stands.
+    And remember, that start marked with \"_\" symbol.</p>
+    <p>P.s. you see? I can paint it! :)</p>
+</description>
+<map.file>basics-another-labyrinth.map</map.file>
+<map.mapcontent>###############
+#-       123  #
+# #####       #
+#> +  ###EfE###
+### ###E#####E#
+# #>   +     >#
+# ##### #######
+#  -   >      #
+### ######### #
+#- >#       # #
+# # # ##### # #
+# # # #     # #
+# # # ####### #
+#_# #         #
+###############</map.mapcontent>
+<map.width>15</map.width>
+<map.height>15</map.height>
+<map.mapfunc>
+var f = function() {
+    for(var i = 0; i<this.options.width; i++) {
+        for (var j = 0; j<this.options.height; j++) {
+            if(this.base[i][j].symbol === '#') {
+                this.base[i][j].color = 'grey'
+            } else if(/^\\d+$/.test(this.base[i][j].symbol)){
+                this.base[i][j].color = 'lime'
+            } else if(this.base[i][j].symbol === 'f'){
+                this.base[i][j].color = '#f0f0f0'
+            }  
+        }
+    }; 
+    this.redraw();
+}
+</map.mapfunc>
+<before>var temp = 0;
+intervals.push(
+    setInterval(function(){
+    try {
+        if (R.standingOn('E')) {
+            R.die();
+        }
+</before>
+<after>
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },500)
+);
+</after>

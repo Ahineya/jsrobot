@@ -1,0 +1,71 @@
+<group>Basics</group>
+<name>Keyword: directions</name>
+<description>
+    <p><span class='story'>*Mechanical voice*:</span></p>
+    <p><span class='story'>&mdash; You will be straying in this hallways forever.</span></p>
+    <p><br></p>
+    <p>Pay attention on what symbol are you staying.</p>
+</description>
+<map.file>basics-keyword-directions.map</map.file>
+<map.mapcontent>###################
+#_ v   > v v < > v#
+# # # # # # # # # #
+#  > v   1   ^   2#
+# # # # # # # # # #
+#>     ^ < >   ^  #
+# # # # # # # # # #
+#v 3 <   v   4   <#
+# # # # # # # # # #
+#  v < >     < 5 v#
+# # # # # # # # # #
+#>   ^   >   6 ^  #
+# # # # # # # # # #
+#v <   ^ <   < v <#
+# # # # # # # # # #
+#>     7 ^ <   8  #
+# # # # # # # # # #
+#      >   ^   > f#
+###################</map.mapcontent>
+<map.width>19</map.width>
+<map.height>19</map.height>
+<map.mapfunc>
+var f = function() {
+    for(var i = 0; i<this.options.width; i++) {
+        for (var j = 0; j<this.options.height; j++) {
+            if(this.base[i][j].symbol === '#') {
+                this.base[i][j].color = 'grey'
+            } else if(/^\\d+$/.test(this.base[i][j].symbol)){
+                this.base[i][j].color = 'lime'
+            } else if(this.base[i][j].symbol === 'f'){
+                this.base[i][j].color = '#f0f0f0'
+            }  
+        }
+    }; 
+    this.redraw();
+}
+</map.mapfunc>
+<before>var direction = 'right';
+intervals.push(
+    setInterval(function(){
+        try {
+</before>
+<after>
+            var directions = {
+                'v': 'down',
+                '>': 'right',
+                '^': 'up',
+                '<': 'left'
+            }
+            if( (!R.standingOn(' ')) && (!R.standingOn('f'))) {
+                if (typeof(directions[R.standingOn()])!=='undefined') {
+                    direction = directions[R.standingOn()];
+                }
+            }
+            R.move(direction);
+
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },200)
+);
+</after>

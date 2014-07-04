@@ -1,0 +1,25 @@
+<group>Basics</group>
+<name>Can you go diagonal?</name>
+<description><p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>You can use each of robot moving methods: <span class='code'>R.left();</span><span class='code'>R.right();</span><span class='code'>R.up();</span><span class='code'>R.down();</span></p></description>
+<map.file>basics-can-you-go-diagonal.map</map.file>
+<map.mapcontent>#######
+#_    #
+#     #
+#     #
+#     #
+#    f#
+#######</map.mapcontent>
+<map.width>7</map.width>
+<map.height>7</map.height>
+<before>
+intervals.push(
+    setInterval(function() {
+        try {
+</before>
+<after>
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },500)
+);
+</after>

@@ -1,0 +1,31 @@
+<group>Basics</group>
+<name>More regexps</name>
+<description>
+    <p><span class='story'>*Mechanical voice*:</span></p>
+    <p><span class='story'>&mdash; You are escaped from labyrinth of doom! But what would you do now?</span></p>
+    <p><br></p>
+    <p>Regexps. I'm loving it!</p>
+</description>
+<map.file>basics-more-regexps.map</map.file>
+<map.mapcontent>#########
+#_  $ f #
+#########</map.mapcontent>
+<map.width>9</map.width>
+<map.height>3</map.height>
+<before>intervals.push(
+    setInterval(function(){
+        try {
+</before>
+<code>var key = '';</code>
+<after>
+            R.right();
+            var r = /<([a-z]{3})>(.*)<\/\1>/;
+            if (r.exec(key)[2] === 'key') {
+                R.destroy('right');
+            }
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },500)
+);
+</after>

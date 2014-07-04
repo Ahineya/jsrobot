@@ -1,0 +1,21 @@
+<group>Basics</group>
+<name>Robot walking commands</name>
+<description>
+    <p><span class='story'>*Mechanical voice*:</span></p>
+    <p><span class='story'>&mdash; You haven't enough rights to be in Snake Chamber. Please, proceed to exit.</span></p>
+</description>
+<map.file>basics-robot-walking-commands.map</map.file>
+<map.mapcontent>############
+#      # f #
+#   #  #   #
+# _ #      #
+############</map.mapcontent>
+<map.width>12</map.width>
+<map.height>5</map.height>
+<before>try {
+</before>
+<after>
+} catch(e) {
+    error(e, intervals, R)
+};
+</after>

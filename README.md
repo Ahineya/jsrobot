@@ -21,7 +21,99 @@ Open a browser at [localhost:8090](http://localhost:8090/)
 
 If you want to add a level, send pull-request with it.
 
-Each level consists of a map file and level description.
+Each level is a .jsrl (jsrobot level) file.
+See /jsrl/test.jsrl file.
+
+It is an xml-look-like file.
+Do not put a space characters before and after tag content, 
+except the tag content is a function or part of javascript code.
+
+Run ```npm install``` from root of the project for rebuilding levels.
+test.jsrl file is skipped while building.
+If you can suggest a better way of running level rebuild - please, create an issue.
+
+It needs to have such parameters:
+
+```group``` - a group you want to add this level
+```name``` - level name
+```description``` - is a level description. In it you can use a ```<p></p>``` tag for paragraph,
+    ```<span class='story'></span>``` for story and ```<span class='code'></span>``` for code blocks.
+```map.file``` - map file name.
+```map.mapcontent``` - map file content.
+```map.mapfunc``` - is a function that will run in a context of a map object. You can use it for colouring, for example.
+```runnerfunc``` - used to create more restrictions in level, for example, throw a custom error when user trying to use some variable etc.
+```before``` and ```after``` - javascript code that frames the user code. See an examples to find out what you can use in it. You are the javascript programmer, aren't you?
+```code``` - if you want, you can specify already written code in code field.
+
+```
+<group>Advanced</group>
+<name>Test</name>
+<description><p>Test description</p></description>
+<map.file>test-created.map</map.file>
+<map.mapcontent>#####
+#   #
+# _ #
+#  f#
+#####</map.mapcontent>
+<map.width>5</map.width>
+<map.height>5</map.height>
+<map.mapfunc>
+var f = function() {
+    for(var i = 0; i<this.options.width; i++) {
+        for (var j = 0; j<this.options.height; j++) {
+            if(this.base[i][j].symbol === '#') {
+                this.base[i][j].color = 'grey';
+            } else if (/^\\d+$/.test(this.base[i][j].symbol)) {
+                this.base[i][j].color = 'lime';
+            } else if(this.base[i][j].symbol === 'f') {
+                this.base[i][j].color = '#f0f0f0';
+            }
+        }
+    };
+    this.redraw();
+}
+</map.mapfunc>
+<runnerfunc>
+(function(code) {
+    if(/steps|counter/.test(code)) {
+        throw new Error('Robot: that would be very easy... You can do it without using steps or counter variables. By the way, do you know, that R is an object, and objects can have properties?.');
+    }
+})(code);
+</runnerfunc>
+<before>
+var counter = 0;
+var steps=0;
+intervals.push(
+    setInterval(function() {
+        try {
+</before>
+<code>
+
+</code>
+<after>
+
+            steps++;
+            if(R.standingOn('1')){
+                counter++;
+            }
+            if( (steps === 4) &&
+                (R.standingOn('1')) &&
+                (counter<=2) )
+                {
+                    R.destroy('right');
+                }
+            if((R.standingOn('2')) &&
+                (/^<(.{1})>\\1<(.{1})>\\2<(.{1})>\\3$/).test(key))
+                {
+                    R.destroy('right');
+                }
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },200)
+);
+</after>
+```
 
 In map files you could use any symbols as a space symbol, except pre-defined in map.js:
 ```javascript
@@ -32,25 +124,7 @@ In map files you could use any symbols as a space symbol, except pre-defined in 
 'f': 'finish'
 ```
 
-Each level described in levels/levels.json in this way:
-```json
-{
-  "name": "Conditional demolition",
-  "map": {
-    "width": 11,
-    "height": 3,
-    "file": "levels/maps/basics-conditional-demolition.map",
-    "mapfunc": "var f = function() {for(var i = 0; i<this.options.width; i++) {for (var j = 0; j<this.options.height; j++) {if(this.base[i][j].symbol === '#') {this.base[i][j].color = 'grey'} else if(/^\\d+$/.test(this.base[i][j].symbol)){this.base[i][j].color = 'lime'} else if(this.base[i][j].symbol === 'f'){this.base[i][j].color = '#f0f0f0'}  }}; this.redraw();}"
-  },
-  "runnerfunc": "(function(code) { if(/steps|counter/.test(code)) {throw new Error('Robot: that would be very easy... You can do it without using steps or counter variables. By the way, do you know, that R is an object, and objects can have properties?.');}} )(code);",
-  "description": "<p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; Some closed doors would stop you. For centuries.</span></p><p><br></p><p></p>",
-  "before": "var counter = 0; var steps=0;\nintervals.push(\n    setInterval(function(){\n        try {",
-  "code": "var key = '';",
-  "after": "\n            steps++;\n            if(R.standingOn('1')){\n                counter++;\n            } if( (steps === 4) &&\n                (R.standingOn('1')) &&\n                (counter<=2) )\n            {\n                R.destroy('right');\n            }\n            if((R.standingOn('2')) &&\n                (/^<(.{1})>\\1<(.{1})>\\2<(.{1})>\\3$/).test(key)) \n            {\n                R.destroy('right');\n            }\n        } catch(e) {\n            error(e, intervals, R);\n        }\n    },200)\n);"
-}
-```
-
-"mapfunc" is a function that will run in a context of a map object. You can use it for colouring, for example.
-"runnerfunc" used to create more restrictions in level, for example, throw a custom error when user trying to use some variable etc.
-"description" is a level description. In it you can use a ```<p></p>``` tag for paragraph, ```<span class='story'></span>``` for story and ```<span class='code'></span>``` for code blocks.
+"mapfunc" 
+"runnerfunc" 
+"description" 
 "before" and "after" is javascript code that frames the user code. See an examples to find out what you can use in it. You are the javascript programmer, aren't you?

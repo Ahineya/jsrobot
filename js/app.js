@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     var R;
     var m;
@@ -18,88 +18,80 @@
         nextLevel = history.state.levelId;
     }
 
-    $('.all-levels').on("click", function() {
+    $('.all-levels').on("click", function () {
         $('.levels').show();
         $('.greeting').hide();
     });
 
-    $('.about').on('click', function() {
+    $('.about').on('click', function () {
         $('.levels').show();
         $('.greeting').show();
         $('.overview').show();
         $('.guide').hide();
     });
-    $('.reminder').on('click', function() {
+    $('.reminder').on('click', function () {
         $('.levels').show();
         $('.greeting').show();
         $('.overview').hide();
         $('.guide').show();
     });
 
-    $('.select-level').on("click", function() {
+    $('.select-level').on("click", function () {
         $(this).parent().parent().hide(); //pain
     });
 
-    $('.cross').on('click', function() {
+    $('.cross').on('click', function () {
         $('.levels').hide();
     });
 
     function loadNextLevel(levels) {
-//console.log('here');
         $('.container').empty();
-
-        //console.log($('.container').html());
 
         if (!this.levels) {
             this.levels = levels;
         }
 
-        //if ()
-
         levels = this.levels;
 
-        //console.log('l:', levels);
-
         var c = 0;
+        var found = false;
 
         $('.overlay').hide();
         for (var level in levels) {
 
             if (levels.hasOwnProperty(level)) {
-                for (var i = 0; i<=levels[level].length; i++) {
-                    //console.log(c);
-
+                for (var i = 0; i < levels[level].length; i++) {
+                    console.log(c, nextLevel);
                     if (c === nextLevel) {
-                        if (typeof(levels[level][c])!=='undefined') {
-                            loadLevel(levels[level][c]);
-                            nextLevel = c+1;
+                        if (typeof(levels[level][i]) !== 'undefined') {
+                            loadLevel(levels[level][i]);
+                            nextLevel = c + 1;
                             window.location.hash = c;
-                            history.replaceState({'levelId':c}, "Jsrobot: level "+ c);
-                        } else {
-                            $('.greeting').hide();
-                            $('.levels').show();
+                            history.replaceState({'levelId': c}, "Jsrobot: level " + c);
+                            found = true;
                         }
                         break;
                     }
-
                     c++;
                 }
             }
         }
+        if (!found) {
+            $('.greeting').hide();
+            $('.levels').show();
+        }
     }
 
     $.get('levels/levels.json')
-        .success(function(data) {
+        .success(function (data) {
 
             var levels = data;
-
-            //console.log(levels);
 
             fillLevelsDiv(levels);
 
             loadNextLevel(levels);
 
-            $(window).on('hashchange', function() {
+            $(window).on('hashchange', function () {
                 nextLevel = +window.location.hash.substring(1);
                 for (var intr in intervals) {
                     clearInterval(intervals[intr]);
@@ -107,7 +99,7 @@
                 loadNextLevel(levels);
             });
 
-            $('.next').off('click').on("click", function() {
+            $('.next').off('click').on("click", function () {
                 for (var intr in intervals) {
                     clearInterval(intervals[intr]);
                 }
@@ -115,7 +107,6 @@
             });
 
         });
-
 
 
     function loadLevel(level) {
@@ -144,7 +135,7 @@
         }
 
 
-        m.fillFromFile(level.map.file, function(data) {
+        m.fillFromFile(level.map.file, function (data) {
             $('.container').empty();
             m.display();
             if (typeof(level.map.mapfunc) !== 'undefined') {
@@ -155,19 +146,21 @@
             R.place();
         });
 
-        $('.name').html("Level: "+level.name);
+        $('.name').html("Level: " + level.name);
         $('.description').html(level.description);
 
         $('.before code').text(level.before);
-        $('.code code').text("\n"+level.code+"\n\n");
+        $('.code code').text("\n" + (level.code || '') + "\n\n");
         $('.after code').text(level.after);
 
-        $('pre code').each(function(i, e) {hljs.highlightBlock(e);});
+        $('pre code').each(function (i, e) {
+            hljs.highlightBlock(e);
+        });
 
         $('.run').attr('disabled', false);
         $('.reload').attr('disabled', false);
 
-        $('.run').off('click').on('click', function() {
+        $('.run').off('click').on('click', function () {
 
             for (var intr in intervals) {
                 clearInterval(intervals[intr]);
@@ -179,12 +172,9 @@
 
             var r = new Runner({
                 robot: R,
-                before:
-                    level.before,
-                after:
-                    level.after,
-                runnerfunc:
-                    level.runnerfunc || '(function() {})'
+                before: level.before,
+                after: level.after,
+                runnerfunc: level.runnerfunc || '(function() {})'
             }, intervals);
 
             r.run(
@@ -193,7 +183,7 @@
 
         });
 
-        var tmr = setInterval(function() {
+        var tmr = setInterval(function () {
             if (R.finished()) {
                 $('.run').attr('disabled', true);
                 $('.reload').attr('disabled', true);
@@ -208,7 +198,7 @@
                 if (wonLevels.indexOf(+window.location.hash.substring(1)) === -1) {
                     wonLevels.push(+window.location.hash.substring(1));
                     localStorage.setItem("wonLevels", JSON.stringify(wonLevels));
-                    $('.level').each(function() {
+                    $('.level').each(function () {
                         if ($(this).data('levelId') == window.location.hash.substring(1)) {
                             $(this).addClass('passed');
                         }
@@ -219,7 +209,7 @@
             }
         }, 200);
 
-        $('.reload').off('click').on('click', function() {
+        $('.reload').off('click').on('click', function () {
 
             for (var intr in intervals) {
                 clearInterval(intervals[intr]);
@@ -236,8 +226,11 @@
         function bindClick(i) {
             var lid = $(this).data('level-id');
             window.location.hash = '#' + lid;
+            console.log('here');
             $('.levels').hide();
         }
+
+        var lid = 0;
 
         for (var grp in levels) {
 
@@ -253,16 +246,18 @@
             var wonLevels = JSON.parse(localStorage.getItem('wonLevels')) || [];
 
             if (levels.hasOwnProperty(grp)) {
-                for (var i = 0; i<levels[grp].length; i++) {
+                for (var i = 0; i < levels[grp].length; i++) {
                     var lvl = $('<div></div>')
                         .addClass('level')
-                        .data('level-id', i)
+                        .data('level-id', lid)
                         .text(i + ". " + levels[grp][i].name)
+                        .off('click')
                         .on('click', bindClick)
                         .appendTo(lgroup);
                     if (wonLevels.indexOf(i) !== -1) {
                         lvl.addClass('passed');
                     }
+                    lid++;
                 }
             }
         }

@@ -35,7 +35,7 @@ describe("1 Map", function() {
             chai.assert(map.cells[0].length === dim.y, "Map cells object didn't have correct height");
             chai.assert(typeof(map.cells[0][0]) === "object", "Map cell objects didn't created");
             chai.assert(
-                map.cells[0][0].symbol === " " &&
+                    map.cells[0][0].symbol === " " &&
                     map.cells[0][0].type === "space" &&
                     map.cells[0][0].color === "black" &&
                     map.cells[0][0].backgroundColor === "white",
@@ -78,24 +78,24 @@ describe("1 Map", function() {
             map2.fillFromString("######   ## _ ##  f######", "green", "black");
 
             chai.assert(
-                map2.cells[0][0].type === "wall" &&
+                    map2.cells[0][0].type === "wall" &&
                     map2.cells[0][0].symbol === "#" &&
                     map2.cells[0][0].color === "green" &&
                     map2.cells[0][0].backgroundColor === "black",
                 "Map cells didn't correctly filled from string [wall]"
             );
             chai.assert(
-                map2.cells[1][1].type === "space" &&
+                    map2.cells[1][1].type === "space" &&
                     map2.cells[1][1].symbol === " ",
                 "Map cells didn't correctly filled from string [space]"
             );
             chai.assert(
-                map2.cells[2][2].type === "start" &&
+                    map2.cells[2][2].type === "start" &&
                     map2.cells[2][2].symbol === "_",
                 "Map cells didn't correctly filled from string [start]"
             );
             chai.assert(
-                map2.cells[3][3].type === "finish" &&
+                    map2.cells[3][3].type === "finish" &&
                     map2.cells[3][3].symbol === "f",
                 "Map cells didn't correctly filled from string [finish]"
             );
@@ -152,26 +152,26 @@ describe("1 Map", function() {
 
         it("1.3.1 should build correct layout for map", function() {
             chai.assert(
-                $(map.options.container + ">." + map.options.wrapperClass).length === 1,
+                    $(map.options.container + ">." + map.options.wrapperClass).length === 1,
                 "Map wrapper didn't created correctly"
             );
             chai.assert(
-                $(map.options.container + ">." + map.options.wrapperClass + " ." + map.options.rowClass + '-0').length ===
+                    $(map.options.container + ">." + map.options.wrapperClass + " ." + map.options.rowClass + '-0').length ===
                     map.options.height,
                 "created rows count is invalid"
             );
             chai.assert(
-                $(map.options.container + ">." + map.options.wrapperClass + " ." + map.options.columnClass + '-0').length ===
-                map.options.width,
+                    $(map.options.container + ">." + map.options.wrapperClass + " ." + map.options.columnClass + '-0').length ===
+                    map.options.width,
                 "created columns count is invalid"
             );
             chai.assert(
-                $(map.options.container + ">." + map.options.wrapperClass + " ." + map.options.cellClass).length ===
+                    $(map.options.container + ">." + map.options.wrapperClass + " ." + map.options.cellClass).length ===
                     map.options.width * map.options.height,
                 "created cells count is invalid"
             );
             chai.assert(
-                $(map.options.container + '>.' + map.options.wrapperClass).width() ===
+                    $(map.options.container + '>.' + map.options.wrapperClass).width() ===
                     map.options.width * map.options.cellSize + 2,
                 "wrapper width isn't correct"
             );
@@ -179,37 +179,37 @@ describe("1 Map", function() {
 
         it("1.3.2 should correctly draw map", function() {
             chai.assert(
-                $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-0')
-                    .eq(0)
-                    .text() === '#' &&
-                $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-0')
-                    .eq(0)
-                    .css('color') === 'rgb(0, 128, 0)' &&
-                $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-0')
-                    .eq(0)
-                    .css('backgroundColor') === 'rgb(0, 0, 0)',
+                    $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-0')
+                        .eq(0)
+                        .text() === '#' &&
+                    $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-0')
+                        .eq(0)
+                        .css('color') === 'rgb(0, 128, 0)' &&
+                    $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-0')
+                        .eq(0)
+                        .css('backgroundColor') === 'rgb(0, 0, 0)',
                 "[0][0] cell isn't drawn properly"
             );
 
             chai.assert(
-                $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-2')
-                    .eq(2)
-                    .text() === "_" &&
-                $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-2')
-                    .eq(2)
-                    .css('color') === 'rgb(0, 128, 0)' &&
-                $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-2')
-                    .eq(2)
-                    .css('backgroundColor') === 'rgb(0, 0, 0)',
+                    $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-2')
+                        .eq(2)
+                        .text() === "_" &&
+                    $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-2')
+                        .eq(2)
+                        .css('color') === 'rgb(0, 128, 0)' &&
+                    $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-2')
+                        .eq(2)
+                        .css('backgroundColor') === 'rgb(0, 0, 0)',
                 "[2][2] cell isn't drawn properly"
             );
         });
 
         it('1.3.3 should assign layout to map.cells object', function() {
             chai.assert(
-                map.cells[0][0].view[0] ===
-                $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-0')
-                    .eq(0)[0],
+                    map.cells[0][0].view[0] ===
+                    $(map.options.container + '>.' + map.options.wrapperClass + ' .' + map.options.columnClass + '-0')
+                        .eq(0)[0],
                 "view isn't assigned to cell [0][0]"
             );
         });
@@ -298,8 +298,8 @@ describe('2 Robot', function() {
         it('2.2.1 should be placed on map', function(){
             chai.assert((R.x === 2) && (R.y === 2), 'Robot incorrectly placed');
             chai.assert(
-                $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass +'-2')
-                    .eq(2).text() === R.face,
+                    $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass +'-2')
+                        .eq(2).text() === R.face,
                 "Robot incorrectly drawn"
             );
         });
@@ -315,13 +315,13 @@ describe('2 Robot', function() {
                 chai.assert(R.walk('up'), "Didn't exec walk function");
                 chai.assert(R.y === tempY - 1, "Didn't change coordinate");
                 chai.assert(
-                    $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + R.x)
-                        .eq(tempY).text() === R.map.cells[R.x][tempY].symbol,
+                        $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + R.x)
+                            .eq(tempY).text() === R.map.cells[R.x][tempY].symbol,
                     "Map didn't restore symbol at old robot place"
                 );
                 chai.assert(
-                    $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + R.x)
-                        .eq(R.y).text() !== R.map.cells[R.x][R.y].symbol,
+                        $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + R.x)
+                            .eq(R.y).text() !== R.map.cells[R.x][R.y].symbol,
                     "Robot didn't change view"
                 );
             });
@@ -380,20 +380,20 @@ describe('2 Robot', function() {
                 var tempX = R.x;
                 var tempY = R.y;
 
-                    chai.assert(!R.right(), "Robot: can't go into the wall");
+                chai.assert(!R.right(), "Robot: can't go into the wall");
 
-                    chai.assert((tempX === R.x) && (tempY === R.y), "Robot coordinates changed");
-                    chai.assert(
-                            $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (tempX + 1))
-                                .eq(R.y).text() === R.map.cells[tempX + 1][R.y].symbol,
-                        "Map wall isn't in it's place"
-                    );
+                chai.assert((tempX === R.x) && (tempY === R.y), "Robot coordinates changed");
+                chai.assert(
+                        $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (tempX + 1))
+                            .eq(R.y).text() === R.map.cells[tempX + 1][R.y].symbol,
+                    "Map wall isn't in it's place"
+                );
 
-                    chai.assert(
-                            $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (tempX + 1))
-                                .eq(tempY).text() === R.map.cells[R.x + 1][R.y].symbol,
-                        "Robot changed view"
-                    );
+                chai.assert(
+                        $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (tempX + 1))
+                            .eq(tempY).text() === R.map.cells[R.x + 1][R.y].symbol,
+                    "Robot changed view"
+                );
 
             });
 
@@ -409,8 +409,8 @@ describe('2 Robot', function() {
             it("2.2.4.1 should destroy the wall", function() {
                 R.destroy('right');
                 chai.assert(
-                    $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (R.x + 1))
-                         .eq(R.y).text() === " ",
+                        $(R.map.options.container + '>.' + R.map.options.wrapperClass + ' .' + R.map.options.columnClass + '-' + (R.x + 1))
+                            .eq(R.y).text() === " ",
                     "Robot didin't destroyed a wall"
                 );
 
