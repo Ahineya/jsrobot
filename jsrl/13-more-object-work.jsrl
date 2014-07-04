@@ -1,12 +1,13 @@
 <group>Advanced</group>
-<name>Object work</name>
+<name>More object work</name>
 <description>
     <p><span class='story'>*Mechanical voice*:</span></p>
-    <p><span class='story'>&mdash; Can you take a key from guinea pig's stomach?</span></p>
+    <p><span class='story'>&mdash; Ok, you did it. But can you take a key from guinea pig's stomach without
+        touching pig with your manipulators?</span></p>
     <p><br></p>
-    <p>You want to tell me that you have beaten all basics levels? Ok, try this one.</p>
+    <p>You want to tell me that you have beaten all basics levels? Ok, try it this one.</p>
 </description>
-<map.file>advanced-object-work.map</map.file>
+<map.file>advanced-more-object-work.map</map.file>
 <map.mapcontent>#######
 #_ $f #
 #######</map.mapcontent>
@@ -28,6 +29,13 @@
     this.redraw();
     }
 </map.mapfunc>
+<runnerfunc>
+    (function(code) {
+    if(/g.*u.*i.*n.*e.*a.*P.*i.*g/gm.test(code)) {
+    throw new Error("Hey. This is an Advanced levels section, did you notice that? You can't touch guineaPig.");
+    }
+    })(code);
+</runnerfunc>
 <before>
 
 var guineaPig = (function() {
@@ -45,12 +53,12 @@ intervals.push(
 
 </code>
 <after>
-            if (guineaPig.getKeyFromStomach()) {
-                R.destroy('right');
-            }
-        } catch(e) {
-            error(e, intervals, R);
+        if (guineaPig.getKeyFromStomach()) {
+            R.destroy('right');
         }
+    } catch(e) {
+        error(e, intervals, R);
+    }
     },200)
-);
+    );
 </after>

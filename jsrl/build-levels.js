@@ -10,3 +10,5 @@ for (var i=0; i<files.length; i++) {
         j.write();
     }
 }
+
+console.log('\n-----------------------------\nLevels has built succesfully.');
