@@ -5,7 +5,7 @@
     <p><span class='story'>&mdash; Ok, you did it. But can you take a key from guinea pig's stomach without
         touching pig with your manipulators?</span></p>
     <p><br></p>
-    <p>You want to tell me that you have beaten all basics levels? Ok, try it this one.</p>
+    <p>Yeah. This level is a same. But you can't use guineaPig variable. No. No way.</p>
 </description>
 <map.file>advanced-more-object-work.map</map.file>
 <map.mapcontent>#######
