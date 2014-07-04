@@ -1,0 +1,64 @@
+<group>Advanced</group>
+<name>Object work</name>
+<description>
+    <p><span class='story'>*Mechanical voice*:</span></p>
+    <p><span class='story'>&mdash; Can you take a key from guinea pig's stomach without
+        touching pig with your manipulators?</span></p>
+    <p><br></p>
+    <p>You want to tell me, that you have beaten all basics levels? Ok, try it this one.</p>
+</description>
+<map.file>advanced-object-work.map</map.file>
+<map.mapcontent>#######
+#_ $f #
+#######</map.mapcontent>
+<map.width>7</map.width>
+<map.height>3</map.height>
+<map.mapfunc>
+    var f = function() {
+    for(var i = 0; i<this.options.width; i++) {
+    for (var j = 0; j<this.options.height; j++) {
+    if(this.base[i][j].symbol === '#') {
+    this.base[i][j].color = 'grey';
+    } else if (/^\\d+$/.test(this.base[i][j].symbol)) {
+    this.base[i][j].color = 'lime';
+    } else if(this.base[i][j].symbol === 'f') {
+    this.base[i][j].color = '#f0f0f0';
+    }
+    }
+    };
+    this.redraw();
+    }
+</map.mapfunc>
+<runnerfunc>
+    (function(code) {
+    if(/guineaPig/.test(code)) {
+    throw new Error("Hey. This is an Advanced levels section, did you notice that? You can't touch guineaPig.");
+    }
+    })(code);
+</runnerfunc>
+<before>
+
+var guineaPig = (function() {
+    var key = false;
+    return {
+        getKeyFromStomach: function() {return key;}
+    }
+})();
+
+intervals.push(
+    setInterval(function() {
+        try {
+</before>
+<code>
+
+</code>
+<after>
+            if (guineaPig.getKeyFromStomach()) {
+                R.destroy('right');
+            }
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },200)
+);
+</after>

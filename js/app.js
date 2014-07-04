@@ -249,8 +249,8 @@
                 if (idx !== -1) {
                     wonLevels.splice(idx, 1);
                     localStorage.setItem("wonLevels", JSON.stringify(wonLevels));
-                    localStorage.setItem("version", "0.0.2");
                 }
+                localStorage.setItem("version", "0.0.2");
             }
 
             if (levels.hasOwnProperty(grp)) {
