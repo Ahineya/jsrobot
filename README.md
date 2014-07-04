@@ -35,17 +35,26 @@ If you can suggest a better way of running level rebuild - please, create an iss
 It needs to have such parameters:
 
 ```group``` - a group you want to add this level
+
 ```name``` - level name
+
 ```description``` - is a level description. In it you can use a ```<p></p>``` tag for paragraph,
+
     ```<span class='story'></span>``` for story and ```<span class='code'></span>``` for code blocks.
+    
 ```map.file``` - map file name.
+
 ```map.mapcontent``` - map file content.
+
 ```map.mapfunc``` - is a function that will run in a context of a map object. You can use it for colouring, for example.
+
 ```runnerfunc``` - used to create more restrictions in level, for example, throw a custom error when user trying to use some variable etc.
+
 ```before``` and ```after``` - javascript code that frames the user code. See an examples to find out what you can use in it. You are the javascript programmer, aren't you?
+
 ```code``` - if you want, you can specify already written code in code field.
 
-```
+```html
 <group>Advanced</group>
 <name>Test</name>
 <description><p>Test description</p></description>
@@ -123,8 +132,3 @@ In map files you could use any symbols as a space symbol, except pre-defined in 
 '_': 'start',
 'f': 'finish'
 ```
-
-"mapfunc" 
-"runnerfunc" 
-"description" 
-"before" and "after" is javascript code that frames the user code. See an examples to find out what you can use in it. You are the javascript programmer, aren't you?
