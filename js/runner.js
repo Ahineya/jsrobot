@@ -14,6 +14,9 @@ function Runner(options, intervals) {
 
             eval(runnerfunc);
 
+            if (/finished/i.test(code)) {
+                throw new Error("Robot: you can't use finished function.");
+            }
             if (/destroy/i.test(code)) {
                 throw new Error("Robot: you can't use destroy function.");
             }
