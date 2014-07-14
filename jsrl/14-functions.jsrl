@@ -1,0 +1,47 @@
+<group>Advanced</group>
+<name>Functions</name>
+<description>
+    <p><span class='story'>*Mechanical voice*:</span></p>
+    <p><span class='story'>&mdash; Use the force!</span></p>
+    <p><br></p>
+    <p>Functions. Mmh, delicious.</p>
+</description>
+<map.file>advanced-functions.map</map.file>
+<map.mapcontent>#######
+#_ $f #
+#######</map.mapcontent>
+<map.width>7</map.width>
+<map.height>3</map.height>
+<map.mapfunc>
+    var f = function() {
+    for(var i = 0; i<this.options.width; i++) {
+    for (var j = 0; j<this.options.height; j++) {
+    if(this.base[i][j].symbol === '#') {
+    this.base[i][j].color = 'grey';
+    } else if (/^\\d+$/.test(this.base[i][j].symbol)) {
+    this.base[i][j].color = 'lime';
+    } else if(this.base[i][j].symbol === 'f') {
+    this.base[i][j].color = '#f0f0f0';
+    }
+    }
+    };
+    this.redraw();
+    }
+</map.mapfunc>
+<before>
+intervals.push(
+    setInterval(function() {
+        try {
+</before>
+<code>
+</code>
+<after>
+            if (key('asdjk') && !key('joker')) {
+                R.destroy('right');
+            }
+        } catch(e) {
+            error(e, intervals, R);
+        }
+    },200)
+);
+</after>
