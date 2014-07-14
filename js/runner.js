@@ -20,7 +20,7 @@ function Runner(options, intervals) {
             if (/destroy/i.test(code)) {
                 throw new Error("Robot: you can't use destroy function.");
             }
-            if (/R\.x|R\.y|R\[\'x|y\'\]/i.test(code)) {
+            if (/R\.x|R\.y|R\[\'[xy]\'\]/i.test(code)) {
                 throw new Error("Robot: do you want to teleport me?");
             }
             if (/\/\/|\/\*/i.test(code)) {
