@@ -4,7 +4,7 @@
     <p><span class='story'>*Mechanical voice*:</span></p>
     <p><span class='story'>&mdash; You are disobeying our instructions. Wait in this room until guards came.</span></p>
     <p><br></p>
-    <p>Regexps. Cool thing, eh? \"$\" represents a closed door. You need a key...</p>
+    <p>Regexps. Cool thing, eh? "$" represents a closed door. You need a key...</p>
     <p>Technically, the door is the wall, which you can destroy via <span class='code'>R.destroy(direction);</span>
     Oh, I'm sorry. You can't. I can.</p>
 </description>

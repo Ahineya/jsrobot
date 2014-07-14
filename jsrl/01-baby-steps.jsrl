@@ -1,6 +1,12 @@
 <group>Basics</group>
 <name>Baby steps</name>
-<description><p><span class='story'>*Mechanical voice*:</span></p><p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p><p><br></p><p>You can write your code in the dark grey area at bottom.</p><p>You are a robot, that smiling face represents you. \"#\" symbol is a wall. \"_\" is a start. \"f\" is a finish, it's your goal at this level.</p><p></p><p>In this code scope variable R is the robot object.</p><p>In each level you need to figure out what code you need to write to solve the task.</p><p>Write \"<span class='code'>R.right();</span>\" to proceed.</p></description>
+<description><p><span class='story'>*Mechanical voice*:</span></p>
+<p><span class='story'>&mdash; You are not supposed to be here. Please, proceed to exit.</span></p>
+<p><br></p>
+<p>You can write your code in the dark grey area at bottom.</p>
+<p>You are a robot, that smiling face represents you. "#" symbol is a wall. "_" is a start. "f" is a finish, it's your goal at this level.</p>
+<p></p>
+<p>In this code scope variable R is the robot object.</p><p>In each level you need to figure out what code you need to write to solve the task.</p><p>Write "<span class='code'>R.right();</span>" to proceed.</p></description>
 <map.file>basics-baby-steps.map</map.file>
 <map.mapcontent>####################
 #                  #

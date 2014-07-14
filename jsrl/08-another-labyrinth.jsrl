@@ -5,7 +5,7 @@
     <p><span class='story'>&mdash; Try to escape from labyrinth of doom! Bzzz-zzz.</span></p>
     <p><br></p>
     <p>If <span class='code'>R.standingOn(char)</span> called without params, it returns symbol robot stands.
-    And remember, that start marked with \"_\" symbol.</p>
+    And remember that start marked with "_" symbol.</p>
     <p>P.s. you see? I can paint it! :)</p>
 </description>
 <map.file>basics-another-labyrinth.map</map.file>
