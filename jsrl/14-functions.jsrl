@@ -36,7 +36,7 @@ intervals.push(
 <code>
 </code>
 <after>
-            if (key('asdjk') && !key('joker')) {
+            if (key('joker') && !key('joker')) {
                 R.destroy('right');
             }
         } catch(e) {
