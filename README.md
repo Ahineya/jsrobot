@@ -1,7 +1,7 @@
-# jsrobot
+# jsrobot  [![Build Status](https://travis-ci.org/Ahineya/jsrobot.svg?branch=master)](https://travis-ci.org/Ahineya/jsrobot)
 
 JavaScript challenges web application
-[![Build Status](https://travis-ci.org/Ahineya/jsrobot.svg?branch=master)](https://travis-ci.org/Ahineya/jsrobot)
+
 
 ## How To Install
 
