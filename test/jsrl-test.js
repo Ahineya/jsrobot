@@ -1,7 +1,7 @@
 var chai = require('chai');
 
 var JSRL = require('../jsrl/jsrl.js');
-var j = new JSRL();
+var j = new JSRL(true);
 
 
 describe('3 JSRL', function() {
