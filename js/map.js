@@ -83,11 +83,17 @@ function Map(options) {
     };
 
     this.fillFromFile = function(filename, callback) {
-        $.get(filename, function(data) {
-            data = data.replace(/(?:\r\n|\r|\n)/g, '');
-            self.fillFromString(data, "green", "black");
-            callback();
-        });
+        $.get(filename)
+            .done(function(data) {
+                data = data.replace(/(?:\r\n|\r|\n)/g, '');
+                self.fillFromString(data, "green", "black");
+                callback();
+            })
+            .fail(function(data) {
+                data = data.responseText.replace(/(?:\r\n|\r|\n)/g, '');
+                self.fillFromString(data, "green", "black");
+                callback();
+            });
     };
 
     this.display = function() {
