@@ -1,6 +1,7 @@
-# jsrobot
+# jsrobot  [![Build Status](https://travis-ci.org/Ahineya/jsrobot.svg?branch=master)](https://travis-ci.org/Ahineya/jsrobot)
 
 JavaScript challenges web application
+
 
 ## How To Install
 
@@ -130,3 +131,4 @@ In map files you could use any symbols as a space symbol, except pre-defined in 
 '_': 'start',
 'f': 'finish'
 ```
+ 

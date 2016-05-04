@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-function JSRL() {
+function JSRL(test) {
 
     this.level = {
         map: {}
@@ -21,7 +21,7 @@ function JSRL() {
                 }
             }
 
-            console.log(this.level);
+            if (test) {console.log(this.level)};
 
             return true;
         } catch (e) {
