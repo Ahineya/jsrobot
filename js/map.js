@@ -90,7 +90,7 @@ function Map(options) {
                 callback();
             })
             .fail(function(data) {
-                data = data.responseText.replace(/(?:\r\n|\r|\n)/g, '');
+                data = data.responseText.replace(/(?:\r\n|\r|\n)/g, ''); 
                 self.fillFromString(data, "green", "black");
                 callback();
             });
